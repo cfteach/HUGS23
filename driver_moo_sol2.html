@@ -1,0 +1,2189 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Create detector geometry and simulate tracks &#8212; AI/ML for NP and EIC</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="canonical" href="Webpage_address/driver_moo_sol2.html" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MOBO" href="exe3b_moo_BO_3obj.html" />
+    <link rel="prev" title="MOEA" href="exe3a_moo_EA_3obj.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint">Building the page now</div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/ai4eic_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AI/ML for NP and EIC</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Section 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectures.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ToyProblem.html">
+   Toy Tracker
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercise 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="driver_bo.html">
+   Create detector geometry and simulate tracks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercise 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exe3a_moo_EA_3obj.html">
+   MOEA
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Create detector geometry and simulate tracks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Exercise 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="exe3b_moo_BO_3obj.html">
+   MOBO
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ECCE-EIC Case
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-Intro.html">
+   AI Assisted Tracker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-Tracking.html">
+   EIC Tracking system
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-TrackerObj_Cons.html">
+   Metrics of Performance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-TrackerParameterization.html">
+   Parameterizing the tracker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-DevelopedPipeline.html">
+   The optimization pipeline
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-Visualization.html">
+   Navigating through solutions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="EIC-Summary.html">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/cfteach/ml4hep/main?urlpath=tree/design_optimization/driver_moo_sol2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="http://jupyterhub.jlab.org/hub/user-redirect/git-pull?repo=https://github.com/https://github.com/cfteach/ml4hep&urlpath=tree/ml4hep/design_optimization/driver_moo_sol2.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/cfteach/ml4hep/blob/main/design_optimization/driver_moo_sol2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/https://github.com/cfteach/ml4hep"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/https://github.com/cfteach/ml4hep/issues/new?title=Issue%20on%20page%20%2Fdriver_moo_sol2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/cfteach/ml4hep/edit/main/design_optimization/driver_moo_sol2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/driver_moo_sol2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Create detector geometry and simulate tracks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-parameters">
+     LIST OF PARAMETERS
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-objectives">
+     Define Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-objective-optimization">
+   Multi-Objective Optimization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">
+     Creation of Problem and choice of optimization algorithm.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments">
+     Comments:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-of-results">
+     Analysis of Results
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Comments:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-processing-metrics-and-decision-making">
+   Post-processing: Metrics and Decision Making
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision Making
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-optimal-geometry">
+     Plotting Optimal Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-2">
+   Solution 2
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Create detector geometry and simulate tracks</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Create detector geometry and simulate tracks
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-parameters">
+     LIST OF PARAMETERS
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-objectives">
+     Define Objectives
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-objective-optimization">
+   Multi-Objective Optimization
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">
+     Creation of Problem and choice of optimization algorithm.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments">
+     Comments:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-of-results">
+     Analysis of Results
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Comments:
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#post-processing-metrics-and-decision-making">
+   Post-processing: Metrics and Decision Making
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision Making
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-optimal-geometry">
+     Plotting Optimal Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-2">
+   Solution 2
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/cfteach/modules.git
+<span class="o">!</span>pip install pymoo 
+<span class="o">!</span>pip install ipyvolume
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;modules&#39;...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 21 (delta 3), reused 9 (delta 0), pack-reused 0
+Unpacking objects: 100% (21/21), done.
+Collecting pymoo
+  Downloading pymoo-0.5.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (2.5 MB)
+     |████████████████████████████████| 2.5 MB 12.8 MB/s 
+?25hRequirement already satisfied: matplotlib&gt;=3 in /usr/local/lib/python3.7/dist-packages (from pymoo) (3.2.2)
+Requirement already satisfied: scipy&gt;=1.1 in /usr/local/lib/python3.7/dist-packages (from pymoo) (1.4.1)
+Requirement already satisfied: numpy&gt;=1.15 in /usr/local/lib/python3.7/dist-packages (from pymoo) (1.19.5)
+Collecting cma==2.7
+  Downloading cma-2.7.0-py2.py3-none-any.whl (239 kB)
+     |████████████████████████████████| 239 kB 44.0 MB/s 
+?25hRequirement already satisfied: autograd&gt;=1.3 in /usr/local/lib/python3.7/dist-packages (from pymoo) (1.3)
+Requirement already satisfied: future&gt;=0.15.2 in /usr/local/lib/python3.7/dist-packages (from autograd&gt;=1.3-&gt;pymoo) (0.16.0)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib&gt;=3-&gt;pymoo) (0.11.0)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib&gt;=3-&gt;pymoo) (2.8.2)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib&gt;=3-&gt;pymoo) (1.3.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib&gt;=3-&gt;pymoo) (3.0.6)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib&gt;=3-&gt;pymoo) (1.15.0)
+Installing collected packages: cma, pymoo
+Successfully installed cma-2.7.0 pymoo-0.5.0
+Collecting ipyvolume
+  Downloading ipyvolume-0.5.2-py2.py3-none-any.whl (2.9 MB)
+     |████████████████████████████████| 2.9 MB 4.8 MB/s 
+?25hCollecting ipywebrtc
+  Downloading ipywebrtc-0.6.0-py2.py3-none-any.whl (260 kB)
+     |████████████████████████████████| 260 kB 60.8 MB/s 
+?25hRequirement already satisfied: numpy in /usr/local/lib/python3.7/dist-packages (from ipyvolume) (1.19.5)
+Requirement already satisfied: Pillow in /usr/local/lib/python3.7/dist-packages (from ipyvolume) (7.1.2)
+Requirement already satisfied: traitlets in /usr/local/lib/python3.7/dist-packages (from ipyvolume) (5.1.1)
+Requirement already satisfied: ipywidgets&gt;=7.5 in /usr/local/lib/python3.7/dist-packages (from ipyvolume) (7.6.5)
+Requirement already satisfied: requests in /usr/local/lib/python3.7/dist-packages (from ipyvolume) (2.23.0)
+Collecting traittypes
+  Downloading traittypes-0.2.1-py2.py3-none-any.whl (8.6 kB)
+Collecting pythreejs&gt;=1.0.0
+  Downloading pythreejs-2.3.0-py2.py3-none-any.whl (3.4 MB)
+     |████████████████████████████████| 3.4 MB 61.9 MB/s 
+?25hRequirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (0.2.0)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (3.5.2)
+Requirement already satisfied: ipython&gt;=4.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (5.5.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (5.1.3)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (4.10.1)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets&gt;=7.5-&gt;ipyvolume) (1.0.2)
+Requirement already satisfied: tornado&gt;=4.0 in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (5.1.1)
+Requirement already satisfied: jupyter-client in /usr/local/lib/python3.7/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (5.3.5)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.7.5)
+Requirement already satisfied: simplegeneric&gt;0.8 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.8.1)
+Requirement already satisfied: decorator in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (4.4.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (57.4.0)
+Requirement already satisfied: pexpect in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (4.8.0)
+Requirement already satisfied: pygments in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (2.6.1)
+Requirement already satisfied: prompt-toolkit&lt;2.0.0,&gt;=1.0.4 in /usr/local/lib/python3.7/dist-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (1.0.18)
+Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (2.6.0)
+Requirement already satisfied: jupyter-core in /usr/local/lib/python3.7/dist-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (4.9.1)
+Requirement already satisfied: six&gt;=1.9.0 in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit&lt;2.0.0,&gt;=1.0.4-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (1.15.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit&lt;2.0.0,&gt;=1.0.4-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.2.5)
+Collecting ipydatawidgets&gt;=1.1.1
+  Downloading ipydatawidgets-4.2.0-py2.py3-none-any.whl (275 kB)
+     |████████████████████████████████| 275 kB 14.4 MB/s 
+?25hRequirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.7/dist-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (5.3.1)
+Requirement already satisfied: nbconvert in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (5.6.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (2.11.3)
+Requirement already satisfied: Send2Trash in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (1.8.0)
+Requirement already satisfied: terminado&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.12.1)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.7/dist-packages (from jupyter-client-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (2.8.2)
+Requirement already satisfied: pyzmq&gt;=13 in /usr/local/lib/python3.7/dist-packages (from jupyter-client-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (22.3.0)
+Requirement already satisfied: ptyprocess in /usr/local/lib/python3.7/dist-packages (from terminado&gt;=0.8.1-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.7.0)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/dist-packages (from jinja2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (2.0.1)
+Requirement already satisfied: bleach in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (4.1.0)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.8.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (1.5.0)
+Requirement already satisfied: testpath in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.5.0)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.7.1)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.7/dist-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.3)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.7/dist-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (0.5.1)
+Requirement already satisfied: packaging in /usr/local/lib/python3.7/dist-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.7/dist-packages (from packaging-&gt;bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets&gt;=7.5-&gt;ipyvolume) (3.0.6)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests-&gt;ipyvolume) (2021.10.8)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests-&gt;ipyvolume) (2.10)
+Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests-&gt;ipyvolume) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests-&gt;ipyvolume) (1.24.3)
+Installing collected packages: traittypes, ipydatawidgets, pythreejs, ipywebrtc, ipyvolume
+Successfully installed ipydatawidgets-4.2.0 ipyvolume-0.5.2 ipywebrtc-0.6.0 pythreejs-2.3.0 traittypes-0.2.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload 
+<span class="o">%</span><span class="k">autoreload</span> 2
+
+<span class="kn">import</span> <span class="nn">ipyvolume</span> <span class="k">as</span> <span class="nn">ipv</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span><span class="p">,</span> <span class="n">Latex</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1">#import AI4NP_detector_opt.sol2.detector2 as detector2 </span>
+<span class="kn">import</span> <span class="nn">modules.detector2</span> <span class="k">as</span> <span class="nn">detector2</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">dill</span>
+
+<span class="kn">from</span> <span class="nn">pymoo.algorithms.moo.nsga2</span> <span class="kn">import</span> <span class="n">NSGA2</span>
+<span class="c1">#from pymoo.factory import Problem</span>
+<span class="kn">from</span> <span class="nn">pymoo.core.problem</span> <span class="kn">import</span> <span class="n">Problem</span>
+<span class="kn">from</span> <span class="nn">pymoo.core.problem</span> <span class="kn">import</span> <span class="n">ElementwiseProblem</span>
+<span class="kn">from</span> <span class="nn">pymoo.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span> <span class="nn">pymoo.visualization.scatter</span> <span class="kn">import</span> <span class="n">Scatter</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">from pymoo.algorithms.nsga2 import NSGA2</span>
+<span class="sd">from pymoo.model.problem import Problem</span>
+<span class="sd">from pymoo.optimize import minimize</span>
+<span class="sd">from pymoo.visualization.scatter import Scatter</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">pymoo.factory</span> <span class="kn">import</span> <span class="n">get_visualization</span><span class="p">,</span> <span class="n">get_decomposition</span>
+<span class="kn">from</span> <span class="nn">pymoo.util.display</span> <span class="kn">import</span> <span class="n">Display</span>
+
+<span class="kn">from</span> <span class="nn">pymoo.factory</span> <span class="kn">import</span> <span class="n">get_performance_indicator</span>
+<span class="c1">#from pymoo.performance_indicator.hv import Hypervolume</span>
+
+<span class="kn">from</span> <span class="nn">pymoo.factory</span> <span class="kn">import</span> <span class="n">get_decision_making</span><span class="p">,</span> <span class="n">get_reference_directions</span>
+<span class="kn">from</span> <span class="nn">pymoo.util.nds.non_dominated_sorting</span> <span class="kn">import</span> <span class="n">NonDominatedSorting</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="create-detector-geometry-and-simulate-tracks">
+<h1>Create detector geometry and simulate tracks<a class="headerlink" href="#create-detector-geometry-and-simulate-tracks" title="Permalink to this headline">#</a></h1>
+<p>The module detector creates a simple 2D geometry of a wire based tracker made by 4 planes.</p>
+<p>The adjustable parameters are the radius of each wire, the pitch (along the y axis), and the shift along y and z of a plane with respect to the previous one.</p>
+<p>A total of 8 parameters can be tuned.</p>
+<p>The goal of this toy model, is to tune the detector design so to optimize the efficiency (fraction of tracks which are detected) as well as the cost for its realization. As a proxy for the cost, we use the material/volume (the surface in 2D) of the detector. For a track to be detetected, in the efficiency definition we require at least two wires hit by the track.</p>
+<p>So we want to maximize the efficiency (defined in <a class="reference external" href="http://detector.py">detector.py</a>) and minimize the cost.</p>
+<section id="list-of-parameters">
+<h2>LIST OF PARAMETERS<a class="headerlink" href="#list-of-parameters" title="Permalink to this headline">#</a></h2>
+<p>(baseline values)</p>
+<ul class="simple">
+<li><p>R = .5   [cm]</p></li>
+<li><p>pitch = 4.0  [cm]</p></li>
+<li><p>y1 = 0.0, y2 = 0.0, y3 = 0.0, z1 = 2.0, z2 = 4.0, z3 = 6.0 [cm]</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CONSTANT PARAMETERS</span>
+<span class="c1">#------ define mother region ------#</span>
+<span class="n">y_min</span><span class="o">=-</span><span class="mf">10.1</span>
+<span class="n">y_max</span><span class="o">=</span><span class="mf">10.1</span>
+
+<span class="n">N_tracks</span> <span class="o">=</span> <span class="mi">500</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;::::: BASELINE PARAMETERS :::::&quot;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">.5</span>  
+<span class="n">pitch</span> <span class="o">=</span> <span class="mf">10.0</span>  
+<span class="n">y1</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">z1</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">z2</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">z3</span> <span class="o">=</span> <span class="mf">6.0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R, pitch, y1, y2, y3, z1, z2, z3: &quot;</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#------------- GEOMETRY ---------------#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:::: INITIAL GEOMETRY ::::&quot;</span><span class="p">)</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">Tracker</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">)</span>
+<span class="n">Z</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">create_geometry</span><span class="p">()</span>
+<span class="n">num_wires</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">calculate_wires</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">wires_volume</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">detector2</span><span class="o">.</span><span class="n">geometry_display</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">y_max</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">pause</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="c1">#5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# of wires: &quot;</span><span class="p">,</span> <span class="n">num_wires</span><span class="p">,</span> <span class="s2">&quot;, volume: &quot;</span><span class="p">,</span> <span class="n">volume</span><span class="p">)</span>
+
+<span class="c1">#------------- TRACK GENERATION -----------#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:::: TRACK GENERATION ::::&quot;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">Tracks</span><span class="p">(</span><span class="n">b_min</span><span class="o">=</span><span class="n">y_min</span><span class="p">,</span> <span class="n">b_max</span><span class="o">=</span><span class="n">y_max</span><span class="p">,</span> <span class="n">alpha_mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha_std</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1">#-100,100</span>
+<span class="n">tracks</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">N_tracks</span><span class="p">)</span>
+
+<span class="n">detector2</span><span class="o">.</span><span class="n">geometry_display</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">y_max</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pause</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">detector2</span><span class="o">.</span><span class="n">tracks_display</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">pause</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+ <span class="c1">#a track is detected if at least two wires have been hit</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">frac_detected</span> <span class="o">=</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fraction of tracks detected: &quot;</span><span class="p">,</span><span class="n">frac_detected</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>::::: BASELINE PARAMETERS :::::
+R, pitch, y1, y2, y3, z1, z2, z3:  0.5 10.0 0.0 0.0 0.0 2.0 4.0 6.0 
+
+:::: INITIAL GEOMETRY ::::
+# of wires:  12 , volume:  37.68
+:::: TRACK GENERATION ::::
+</pre></div>
+</div>
+<img alt="_images/driver_moo_sol2_3_1.png" src="_images/driver_moo_sol2_3_1.png" />
+<img alt="_images/driver_moo_sol2_3_2.png" src="_images/driver_moo_sol2_3_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-objectives">
+<h2>Define Objectives<a class="headerlink" href="#define-objectives" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Defines a class for the objectives of the problem that can be used in the MOO.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">objectives</span><span class="p">():</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tracks</span><span class="p">,</span><span class="n">y_min</span><span class="p">,</span><span class="n">y_max</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tracks</span> <span class="o">=</span> <span class="n">tracks</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span> <span class="o">=</span> <span class="n">y_min</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">y_max</span> <span class="o">=</span> <span class="n">y_max</span>
+
+  <span class="k">def</span> <span class="nf">wrapper_geometry</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
+
+      <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">inner</span>
+
+  <span class="k">def</span> <span class="nf">update_tracks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_tracks</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tracks</span> <span class="o">=</span> <span class="n">new_tracks</span>
+
+  <span class="k">def</span> <span class="nf">update_design_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span>
+
+
+  <span class="k">def</span> <span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">):</span>
+    <span class="n">tr</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">Tracker</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">R</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">create_geometry</span><span class="p">()</span>
+
+
+  <span class="nd">@wrapper_geometry</span>
+  <span class="k">def</span> <span class="nf">calc_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">res</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+      <span class="k">assert</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span><span class="s2">&quot;Fraction or Resolution negative.&quot;</span>
+      
+      <span class="k">return</span> <span class="n">res</span>
+
+  
+  <span class="k">def</span> <span class="nf">get_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tracks</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+  
+
+  <span class="k">def</span> <span class="nf">get_volume</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">wires_volume</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_max</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">volume</span>
+
+
+
+<span class="n">res_o</span> <span class="o">=</span> <span class="n">objectives</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span><span class="n">y_min</span><span class="p">,</span><span class="n">y_max</span><span class="p">)</span>
+
+<span class="c1">#res.geometry(R, pitch, y1, y2, y3, z1, z2, z3)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span>
+<span class="c1">#fscore  = res_o.get_score(X)</span>
+<span class="n">res_o</span><span class="o">.</span><span class="n">update_design_point</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">fscore</span>  <span class="o">=</span> <span class="n">res_o</span><span class="o">.</span><span class="n">calc_score</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">fvolume</span> <span class="o">=</span> <span class="n">res_o</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...check: &quot;</span><span class="p">,</span> <span class="n">fvolume</span><span class="p">,</span> <span class="n">fscore</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>...check:  37.68 0.12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="multi-objective-optimization">
+<h1>Multi-Objective Optimization<a class="headerlink" href="#multi-objective-optimization" title="Permalink to this headline">#</a></h1>
+<p>We will be using pymoo (<a class="reference external" href="https://pymoo.org/getting_started.html">https://pymoo.org/getting_started.html</a>).</p>
+<ul class="simple">
+<li><p>In the constructor method we specify number of variables N, objectives M, and constraint functions, as well as the lower and upper boundaries of each variable. In our toy model, these boundaries are taken in such a way that all solutions are feasible and no constraint function is needed. You can try to change this and introduce some constraint.</p></li>
+<li><p>The <em>_evaluate</em> method takes a one-dimensional NumPy array x number of entries equal to n_var. This behavior is enabled by setting <em>elementwise_evaluation=True</em> while calling the super() method.</p></li>
+<li><p>Notice that every function is minimized. Our efficiency is defined as an tracking inefficiency = 1 - efficiency</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyProblem</span><span class="p">(</span><span class="n">ElementwiseProblem</span><span class="p">):</span> <span class="c1"># Change from pymoo 0.4.2 -&gt; 0.5.0 Problem -&gt; ElementwiseProblem</span>
+
+    <span class="c1">#--------- vectorized ---------#</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">n_var</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                         <span class="n">n_obj</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                         <span class="n">n_constr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                         <span class="n">xl</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">]),</span>
+                         <span class="n">xu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">10.</span><span class="p">]))</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+
+        <span class="n">f1</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">-</span><span class="n">res_o</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">res_o</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span>
+
+        <span class="c1">#if you had constraints</span>
+        <span class="c1">#g1 = gu1(x)</span>
+        <span class="c1">#g2 = gu2(x), etc. </span>
+
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]</span>
+        <span class="c1">#out[&quot;G&quot;] = [g1, g2, ...]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creation-of-problem-and-choice-of-optimization-algorithm">
+<h2>Creation of Problem and choice of optimization algorithm.<a class="headerlink" href="#creation-of-problem-and-choice-of-optimization-algorithm" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>We will use NSGA-II, as explained in the lectures. You can decide the population size and the number of offsprings, based on what we discussed.</p></li>
+<li><p>Pymoo offers different algorithms that can be used which are highly customizable and can be easily extended.
+<a class="reference external" href="https://pymoo.org/algorithms/index.html">https://pymoo.org/algorithms/index.html</a></p></li>
+<li><p>Before dealing with a problem, it’s useful to compare with a list of test problems reported in <a class="reference external" href="https://pymoo.org/problems/index.html">https://pymoo.org/problems/index.html</a>, where different scenarios in terms of Variables, Objectives, Constraints are described.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDisplay</span><span class="p">(</span><span class="n">Display</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">_do</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">evaluator</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_do</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">evaluator</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;X&gt;&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;f1&gt;&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&lt;f2&gt;&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">pop</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]))</span>
+
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">MyProblem</span><span class="p">()</span>
+
+
+<span class="n">num_gen</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="n">algorithm</span> <span class="o">=</span> <span class="n">NSGA2</span><span class="p">(</span><span class="n">pop_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">n_offsprings</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
+               <span class="n">algorithm</span><span class="p">,</span>
+               <span class="p">(</span><span class="s2">&quot;n_gen&quot;</span><span class="p">,</span> <span class="n">num_gen</span><span class="p">),</span>
+               <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+               <span class="n">display</span><span class="o">=</span><span class="n">MyDisplay</span><span class="p">(),</span>
+               <span class="n">save_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+n_gen |  n_eval |     &lt;X&gt;      |     &lt;f1&gt;     |     &lt;f2&gt;    
+============================================================
+    1 |     100 |  3.574631175 |  0.458060000 |  1.62169E+02
+    2 |     120 |  3.556092322 |  0.463760000 |  1.54002E+02
+    3 |     140 |  3.520945200 |  0.465920000 |  1.50131E+02
+    4 |     160 |  3.553267686 |  0.474160000 |  1.44961E+02
+    5 |     180 |  3.577877757 |  0.474800000 |  1.45671E+02
+    6 |     200 |  3.596698175 |  0.467260000 |  1.45044E+02
+    7 |     220 |  3.593146064 |  0.464420000 |  1.42016E+02
+    8 |     240 |  3.611497114 |  0.472460000 |  1.36489E+02
+    9 |     260 |  3.587746069 |  0.466740000 |  1.35912E+02
+   10 |     280 |  3.551624199 |  0.473580000 |  1.29619E+02
+   11 |     300 |  3.532715242 |  0.481340000 |  1.27628E+02
+   12 |     320 |  3.540980143 |  0.470140000 |  1.31824E+02
+   13 |     340 |  3.552832678 |  0.461640000 |  1.34570E+02
+   14 |     360 |  3.584664400 |  0.443620000 |  1.38580E+02
+   15 |     380 |  3.596544652 |  0.432560000 |  1.42542E+02
+   16 |     400 |  3.609401043 |  0.427900000 |  1.43170E+02
+   17 |     420 |  3.622064515 |  0.402280000 |  1.50329E+02
+   18 |     440 |  3.626215932 |  0.404060000 |  1.51064E+02
+   19 |     460 |  3.601819196 |  0.402240000 |  1.52649E+02
+   20 |     480 |  3.538386575 |  0.405580000 |  1.49902E+02
+   21 |     500 |  3.503818849 |  0.398800000 |  1.53870E+02
+   22 |     520 |  3.537727990 |  0.406900000 |  1.50233E+02
+   23 |     540 |  3.515811461 |  0.387500000 |  1.58593E+02
+   24 |     560 |  3.501814596 |  0.389540000 |  1.57924E+02
+   25 |     580 |  3.521893586 |  0.386780000 |  1.57886E+02
+   26 |     600 |  3.499455765 |  0.383100000 |  1.60291E+02
+   27 |     620 |  3.539746080 |  0.382240000 |  1.60514E+02
+   28 |     640 |  3.529271025 |  0.373640000 |  1.63622E+02
+   29 |     660 |  3.573021780 |  0.377780000 |  1.64537E+02
+   30 |     680 |  3.546960334 |  0.361800000 |  1.70623E+02
+   31 |     700 |  3.563766287 |  0.372240000 |  1.64833E+02
+   32 |     720 |  3.570486118 |  0.368320000 |  1.67514E+02
+   33 |     740 |  3.572374328 |  0.354940000 |  1.71615E+02
+   34 |     760 |  3.565664402 |  0.356220000 |  1.70326E+02
+   35 |     780 |  3.621505571 |  0.372680000 |  1.60579E+02
+   36 |     800 |  3.608320602 |  0.376480000 |  1.57407E+02
+   37 |     820 |  3.572819867 |  0.365500000 |  1.58909E+02
+   38 |     840 |  3.591594748 |  0.364760000 |  1.56141E+02
+   39 |     860 |  3.588931524 |  0.364480000 |  1.56123E+02
+   40 |     880 |  3.590960480 |  0.357380000 |  1.57049E+02
+   41 |     900 |  3.613533006 |  0.364740000 |  1.56718E+02
+   42 |     920 |  3.621038895 |  0.363140000 |  1.56812E+02
+   43 |     940 |  3.600944161 |  0.359840000 |  1.57869E+02
+   44 |     960 |  3.596680492 |  0.344320000 |  1.64177E+02
+   45 |     980 |  3.593420109 |  0.343580000 |  1.65420E+02
+   46 |    1000 |  3.577384974 |  0.338480000 |  1.67407E+02
+   47 |    1020 |  3.567037268 |  0.339000000 |  1.67263E+02
+   48 |    1040 |  3.545657701 |  0.345800000 |  1.64709E+02
+   49 |    1060 |  3.583573307 |  0.353200000 |  1.62578E+02
+   50 |    1080 |  3.584354952 |  0.364760000 |  1.56394E+02
+   51 |    1100 |  3.566694346 |  0.361060000 |  1.56795E+02
+   52 |    1120 |  3.549496120 |  0.359420000 |  1.56769E+02
+   53 |    1140 |  3.481080247 |  0.357840000 |  1.58222E+02
+   54 |    1160 |  3.478959226 |  0.348920000 |  1.60300E+02
+   55 |    1180 |  3.480582958 |  0.344860000 |  1.64205E+02
+   56 |    1200 |  3.436481260 |  0.349120000 |  1.60949E+02
+   57 |    1220 |  3.439130402 |  0.353020000 |  1.60215E+02
+   58 |    1240 |  3.381796992 |  0.326300000 |  1.67380E+02
+   59 |    1260 |  3.325350986 |  0.323620000 |  1.67544E+02
+   60 |    1280 |  3.333989972 |  0.326200000 |  1.66280E+02
+   61 |    1300 |  3.307130015 |  0.330040000 |  1.64950E+02
+   62 |    1320 |  3.301833194 |  0.330340000 |  1.64820E+02
+   63 |    1340 |  3.284897892 |  0.322540000 |  1.67218E+02
+   64 |    1360 |  3.282055919 |  0.322860000 |  1.68029E+02
+   65 |    1380 |  3.291493535 |  0.325380000 |  1.67311E+02
+   66 |    1400 |  3.266540636 |  0.328720000 |  1.66036E+02
+   67 |    1420 |  3.221142891 |  0.332240000 |  1.64475E+02
+   68 |    1440 |  3.218402500 |  0.329460000 |  1.65312E+02
+   69 |    1460 |  3.143276533 |  0.348260000 |  1.53334E+02
+   70 |    1480 |  3.191246345 |  0.347000000 |  1.55052E+02
+   71 |    1500 |  3.119394778 |  0.343940000 |  1.53109E+02
+   72 |    1520 |  3.074262731 |  0.338780000 |  1.55531E+02
+   73 |    1540 |  3.082564628 |  0.341900000 |  1.53875E+02
+   74 |    1560 |  3.052011790 |  0.337320000 |  1.56232E+02
+   75 |    1580 |  3.049772909 |  0.334840000 |  1.57250E+02
+   76 |    1600 |  3.048212977 |  0.339160000 |  1.55102E+02
+   77 |    1620 |  3.004908887 |  0.342100000 |  1.53211E+02
+   78 |    1640 |  2.973910228 |  0.332980000 |  1.55795E+02
+   79 |    1660 |  2.955747252 |  0.330800000 |  1.55920E+02
+   80 |    1680 |  2.945443880 |  0.327640000 |  1.56359E+02
+   81 |    1700 |  2.921774636 |  0.320940000 |  1.60429E+02
+   82 |    1720 |  2.919826246 |  0.312360000 |  1.65935E+02
+   83 |    1740 |  2.891277721 |  0.305260000 |  1.69050E+02
+   84 |    1760 |  2.838942094 |  0.300380000 |  1.70949E+02
+   85 |    1780 |  2.851506380 |  0.300140000 |  1.70862E+02
+   86 |    1800 |  2.845278807 |  0.299300000 |  1.69547E+02
+   87 |    1820 |  2.804315612 |  0.290580000 |  1.73006E+02
+   88 |    1840 |  2.809457374 |  0.292300000 |  1.73994E+02
+   89 |    1860 |  2.812232435 |  0.292100000 |  1.71789E+02
+   90 |    1880 |  2.792972425 |  0.294720000 |  1.70647E+02
+   91 |    1900 |  2.804754733 |  0.297340000 |  1.71378E+02
+   92 |    1920 |  2.798661944 |  0.295540000 |  1.71851E+02
+   93 |    1940 |  2.817671822 |  0.308240000 |  1.66622E+02
+   94 |    1960 |  2.812771707 |  0.309480000 |  1.66155E+02
+   95 |    1980 |  2.816038710 |  0.309020000 |  1.66058E+02
+   96 |    2000 |  2.824010602 |  0.317140000 |  1.62769E+02
+   97 |    2020 |  2.812996788 |  0.313940000 |  1.60744E+02
+   98 |    2040 |  2.805339264 |  0.310880000 |  1.61587E+02
+   99 |    2060 |  2.806141331 |  0.308460000 |  1.62831E+02
+  100 |    2080 |  2.805954182 |  0.314040000 |  1.60437E+02
+  101 |    2100 |  2.768839368 |  0.305180000 |  1.63202E+02
+  102 |    2120 |  2.776205669 |  0.307580000 |  1.62244E+02
+  103 |    2140 |  2.757476973 |  0.300860000 |  1.64875E+02
+  104 |    2160 |  2.711524854 |  0.299660000 |  1.65799E+02
+  105 |    2180 |  2.713553246 |  0.298820000 |  1.65900E+02
+  106 |    2200 |  2.696491368 |  0.306580000 |  1.59236E+02
+  107 |    2220 |  2.687998834 |  0.302720000 |  1.60605E+02
+  108 |    2240 |  2.713123553 |  0.315780000 |  1.55509E+02
+  109 |    2260 |  2.680476523 |  0.311140000 |  1.55846E+02
+  110 |    2280 |  2.652135003 |  0.305760000 |  1.57278E+02
+  111 |    2300 |  2.647213425 |  0.301980000 |  1.58498E+02
+  112 |    2320 |  2.663466205 |  0.295980000 |  1.60861E+02
+  113 |    2340 |  2.653132295 |  0.298400000 |  1.59984E+02
+  114 |    2360 |  2.687494689 |  0.303140000 |  1.57784E+02
+  115 |    2380 |  2.664478685 |  0.300280000 |  1.58166E+02
+  116 |    2400 |  2.661907076 |  0.296240000 |  1.61635E+02
+  117 |    2420 |  2.682835310 |  0.300260000 |  1.60997E+02
+  118 |    2440 |  2.665265157 |  0.297900000 |  1.60525E+02
+  119 |    2460 |  2.666366247 |  0.297300000 |  1.61094E+02
+  120 |    2480 |  2.652695752 |  0.293160000 |  1.62181E+02
+  121 |    2500 |  2.645782907 |  0.294560000 |  1.62216E+02
+  122 |    2520 |  2.659259255 |  0.315680000 |  1.51664E+02
+  123 |    2540 |  2.653318338 |  0.315600000 |  1.52107E+02
+  124 |    2560 |  2.681491447 |  0.320480000 |  1.51570E+02
+  125 |    2580 |  2.687696007 |  0.322520000 |  1.49774E+02
+  126 |    2600 |  2.689790999 |  0.325320000 |  1.48735E+02
+  127 |    2620 |  2.651157762 |  0.314740000 |  1.52844E+02
+  128 |    2640 |  2.641507857 |  0.310180000 |  1.55200E+02
+  129 |    2660 |  2.647133050 |  0.321520000 |  1.49395E+02
+  130 |    2680 |  2.669216560 |  0.327880000 |  1.47510E+02
+  131 |    2700 |  2.652181236 |  0.327680000 |  1.47588E+02
+  132 |    2720 |  2.651909269 |  0.313800000 |  1.53518E+02
+  133 |    2740 |  2.664195015 |  0.321700000 |  1.51669E+02
+  134 |    2760 |  2.652585033 |  0.311480000 |  1.53951E+02
+  135 |    2780 |  2.670531539 |  0.316980000 |  1.52522E+02
+  136 |    2800 |  2.647982724 |  0.311900000 |  1.53841E+02
+  137 |    2820 |  2.650956720 |  0.309800000 |  1.55436E+02
+  138 |    2840 |  2.677296968 |  0.321180000 |  1.49877E+02
+  139 |    2860 |  2.701197536 |  0.323800000 |  1.49607E+02
+  140 |    2880 |  2.676202762 |  0.316100000 |  1.52146E+02
+  141 |    2900 |  2.638145388 |  0.312160000 |  1.54759E+02
+  142 |    2920 |  2.677257629 |  0.321300000 |  1.51865E+02
+  143 |    2940 |  2.680272648 |  0.319240000 |  1.51695E+02
+  144 |    2960 |  2.663001186 |  0.315260000 |  1.52759E+02
+  145 |    2980 |  2.696587729 |  0.313120000 |  1.52991E+02
+  146 |    3000 |  2.697102271 |  0.314420000 |  1.52504E+02
+  147 |    3020 |  2.715536483 |  0.323360000 |  1.46744E+02
+  148 |    3040 |  2.717891529 |  0.321940000 |  1.47188E+02
+  149 |    3060 |  2.715979605 |  0.320700000 |  1.47462E+02
+  150 |    3080 |  2.699256114 |  0.325480000 |  1.45389E+02
+  151 |    3100 |  2.698988119 |  0.327680000 |  1.44886E+02
+  152 |    3120 |  2.720419919 |  0.332380000 |  1.44712E+02
+  153 |    3140 |  2.698528248 |  0.325140000 |  1.48100E+02
+  154 |    3160 |  2.737002938 |  0.335520000 |  1.44720E+02
+  155 |    3180 |  2.713137106 |  0.321600000 |  1.48195E+02
+  156 |    3200 |  2.684146848 |  0.317280000 |  1.50760E+02
+  157 |    3220 |  2.689295386 |  0.309900000 |  1.54397E+02
+  158 |    3240 |  2.686253885 |  0.312940000 |  1.53575E+02
+  159 |    3260 |  2.708400125 |  0.309320000 |  1.54809E+02
+  160 |    3280 |  2.689442023 |  0.297300000 |  1.57919E+02
+  161 |    3300 |  2.686104137 |  0.299460000 |  1.56348E+02
+  162 |    3320 |  2.636698066 |  0.288860000 |  1.59630E+02
+  163 |    3340 |  2.631197441 |  0.288520000 |  1.59697E+02
+  164 |    3360 |  2.652827225 |  0.293680000 |  1.58753E+02
+  165 |    3380 |  2.650402594 |  0.293460000 |  1.57698E+02
+  166 |    3400 |  2.655815286 |  0.298840000 |  1.55894E+02
+  167 |    3420 |  2.640342697 |  0.299720000 |  1.54938E+02
+  168 |    3440 |  2.655187982 |  0.294660000 |  1.58176E+02
+  169 |    3460 |  2.654614814 |  0.295700000 |  1.56553E+02
+  170 |    3480 |  2.636163426 |  0.292780000 |  1.57263E+02
+  171 |    3500 |  2.629843046 |  0.299560000 |  1.54453E+02
+  172 |    3520 |  2.633489733 |  0.295220000 |  1.55883E+02
+  173 |    3540 |  2.646271167 |  0.302120000 |  1.53050E+02
+  174 |    3560 |  2.655632125 |  0.304220000 |  1.53181E+02
+  175 |    3580 |  2.647751293 |  0.300920000 |  1.53699E+02
+  176 |    3600 |  2.680559493 |  0.298620000 |  1.55457E+02
+  177 |    3620 |  2.677288536 |  0.302820000 |  1.54968E+02
+  178 |    3640 |  2.637075454 |  0.294100000 |  1.56996E+02
+  179 |    3660 |  2.671217236 |  0.297400000 |  1.55089E+02
+  180 |    3680 |  2.650458620 |  0.288860000 |  1.59568E+02
+  181 |    3700 |  2.632261543 |  0.297460000 |  1.55663E+02
+  182 |    3720 |  2.625600588 |  0.295080000 |  1.57289E+02
+  183 |    3740 |  2.638268080 |  0.287040000 |  1.60158E+02
+  184 |    3760 |  2.592283870 |  0.271420000 |  1.64125E+02
+  185 |    3780 |  2.579681053 |  0.270840000 |  1.64111E+02
+  186 |    3800 |  2.582866208 |  0.275300000 |  1.61628E+02
+  187 |    3820 |  2.584849699 |  0.278020000 |  1.59914E+02
+  188 |    3840 |  2.570805096 |  0.277540000 |  1.59278E+02
+  189 |    3860 |  2.596883842 |  0.278220000 |  1.58996E+02
+  190 |    3880 |  2.598069315 |  0.280440000 |  1.57876E+02
+  191 |    3900 |  2.615148015 |  0.283940000 |  1.57194E+02
+  192 |    3920 |  2.599312236 |  0.286280000 |  1.57282E+02
+  193 |    3940 |  2.597375527 |  0.283740000 |  1.57718E+02
+  194 |    3960 |  2.601405898 |  0.288240000 |  1.57457E+02
+  195 |    3980 |  2.590689590 |  0.294480000 |  1.55483E+02
+  196 |    4000 |  2.584131868 |  0.292400000 |  1.55488E+02
+  197 |    4020 |  2.584447036 |  0.292360000 |  1.55358E+02
+  198 |    4040 |  2.592173900 |  0.291340000 |  1.55630E+02
+  199 |    4060 |  2.602443834 |  0.299740000 |  1.52636E+02
+  200 |    4080 |  2.595060177 |  0.295460000 |  1.54081E+02
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments:<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h2>
+<p>You can change what to display during the generations following: <a class="reference external" href="http://pymoo.org/interface/display.html">http://pymoo.org/interface/display.html</a></p>
+<p>e.g.:</p>
+<ul class="simple">
+<li><p>n_gen: # of generations</p></li>
+<li><p>n_eval: # of evaluations. In the first generation the population is created. Then at each iteration, we create new offsprings.</p></li>
+<li><p>n_nds: # of non dominated solutions</p></li>
+<li><p>indicator: all solutions are feasible within the provided ranges. No constraint violations expected (you can check this).</p></li>
+</ul>
+<p>res.F, res.X allow to display the Pareto front (in the objective space) and set (in the design space)</p>
+</section>
+<section id="analysis-of-results">
+<h2>Analysis of Results<a class="headerlink" href="#analysis-of-results" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">Scatter</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tracker inefficiency&quot;</span><span class="p">,</span><span class="s2">&quot;volume (proxy of cost)&quot;</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Objective Space&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymoo.visualization.scatter.Scatter at 0x7fbf35cf1810&gt;
+</pre></div>
+</div>
+<img alt="_images/driver_moo_sol2_12_1.png" src="_images/driver_moo_sol2_12_1.png" />
+</div>
+</div>
+<section id="id1">
+<h3>Comments:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="post-processing-metrics-and-decision-making">
+<h1>Post-processing: Metrics and Decision Making<a class="headerlink" href="#post-processing-metrics-and-decision-making" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#-----------------------------------#</span>
+<span class="c1">#          Post-Processing          #</span>
+<span class="c1">#-----------------------------------#</span>
+<span class="c1">#------------------------------------------------------------------------------#</span>
+
+<span class="n">n_evals</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># corresponding number of function evaluations\</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">[]</span>          <span class="c1"># the objective space values in each generation</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># constraint violation in each generation</span>
+
+
+<span class="c1"># iterate over the deepcopies of algorithms</span>
+<span class="k">for</span> <span class="n">algorithm</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
+
+    <span class="c1"># store the number of function evaluations</span>
+    <span class="n">n_evals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">n_eval</span><span class="p">)</span>
+
+    <span class="c1"># retrieve the optimum from the algorithm</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">opt</span>
+
+    <span class="c1"># store the least contraint violation in this generation (in case this happens)</span>
+    <span class="n">cv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CV&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+    <span class="c1"># filter out only the feasible and append</span>
+    <span class="n">feas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;feasible&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">_F</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)[</span><span class="n">feas</span><span class="p">]</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_F</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#-----------------------------------#</span>
+<span class="c1">#              Metrics              #</span>
+<span class="c1">#-----------------------------------#</span>
+<span class="c1">#------------------------------------------------------------------------------#</span>
+
+<span class="c1"># MODIFY - this is problem dependent: </span>
+<span class="c1"># you can choose any reasonable reference point and calculate the hypervolume with respect to that point. </span>
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+
+<span class="c1"># create the performance indicator object with reference point</span>
+<span class="n">metric</span> <span class="o">=</span> <span class="n">get_performance_indicator</span><span class="p">(</span><span class="s2">&quot;hv&quot;</span><span class="p">,</span> <span class="n">ref_point</span><span class="o">=</span><span class="n">ref_point</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># modified to be compatible with pymoo 0.5.0</span>
+
+
+<span class="c1"># calculate for each generation the HV metric</span>
+<span class="n">hv</span> <span class="o">=</span> <span class="p">[</span><span class="n">metric</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">F</span><span class="p">]</span>  <span class="c1">#F, or res.F , Also in pymoo 0.5.0 it is metric.do(A) not metric.calc(A)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> 
+<span class="c1"># visualize the convergence curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_evals</span><span class="p">,</span> <span class="n">hv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Convergence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Function Evaluations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hypervolume&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/driver_moo_sol2_16_0.png" src="_images/driver_moo_sol2_16_0.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decision-making">
+<h1>Decision Making<a class="headerlink" href="#decision-making" title="Permalink to this headline">#</a></h1>
+<p>The obtained trade-off Pareto solutions can be assigned a pseudo-weight (on each direction of the objexctive space, the pseudo-weight will range in [0,1]) where (1,0) means small f1 (x) and large f2 (y).</p>
+<p>The values of the pseudo-weights will depend on the position of the points on the Pareto front</p>
+<p>After a pseudo-weight is assigned to each solution, the one closer to the decision maker’s wish may be selected.</p>
+<p>For details, see  <a class="reference external" href="https://arxiv.org/pdf/2002.04504.pdf">https://arxiv.org/pdf/2002.04504.pdf</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">pseudo_weights_a</span> <span class="o">=</span> <span class="n">get_decision_making</span><span class="p">(</span><span class="s2">&quot;pseudo-weights&quot;</span><span class="p">,</span> <span class="n">weights_a</span><span class="p">)</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">return_pseudo_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">weights_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">pseudo_weights_b</span> <span class="o">=</span> <span class="n">get_decision_making</span><span class="p">(</span><span class="s2">&quot;pseudo-weights&quot;</span><span class="p">,</span> <span class="n">weights_b</span><span class="p">)</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">return_pseudo_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">weights_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">c</span><span class="p">,</span> <span class="n">pseudo_weights_c</span> <span class="o">=</span> <span class="n">get_decision_making</span><span class="p">(</span><span class="s2">&quot;pseudo-weights&quot;</span><span class="p">,</span> <span class="n">weights_c</span><span class="p">)</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">return_pseudo_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="c1">#-------- few tests </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="n">a</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">[[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">]])</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...weights: &quot;</span><span class="p">,</span> <span class="n">weights_a</span><span class="p">)</span>
+<span class="c1">#print(&quot;...pseudo_weights: &quot;, pseudo_weights_a)</span>
+<span class="n">X_par</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">X</span>
+<span class="n">idx_opt</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">X_opt_a</span> <span class="o">=</span> <span class="n">X_par</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">res_a</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...solution and objectives&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_opt_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...weights: &quot;</span><span class="p">,</span> <span class="n">weights_b</span><span class="p">)</span>
+<span class="c1">#print(&quot;...pseudo_weights: &quot;, pseudo_weights_b)</span>
+<span class="n">idx_opt</span> <span class="o">=</span> <span class="n">b</span>
+<span class="n">X_opt_b</span> <span class="o">=</span> <span class="n">X_par</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">res_b</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...solution and objectives&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_opt_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...weights: &quot;</span><span class="p">,</span> <span class="n">weights_c</span><span class="p">)</span>
+<span class="c1">#print(&quot;...pseudo_weights: &quot;, pseudo_weights_c)</span>
+<span class="n">idx_opt</span> <span class="o">=</span> <span class="n">c</span>
+<span class="n">X_opt_c</span> <span class="o">=</span> <span class="n">X_par</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">res_c</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">[</span><span class="n">idx_opt</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...solution and objectives&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_opt_c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+19
+[ 0.662      64.36179163]
+[[  0.662       64.36179163]
+ [  0.222      142.46456989]]
+...weights:  [0. 0.]
+...solution and objectives
+[0.50617914 4.42500053 3.59719481 1.08060365 3.52779903 4.80775098
+ 7.22078476 6.15742201]
+[ 0.662      64.36179163]
+
+...weights:  [0.5 0.5]
+...solution and objectives
+[0.66049866 3.0475889  1.70365715 0.26344654 1.6278559  2.05921804
+ 5.82735213 2.20149936]
+[  0.222      142.46456989]
+
+...weights:  [1. 1.]
+...solution and objectives
+[0.5058842  4.42176162 2.85187848 0.04477851 2.93221435 8.47843333
+ 8.68979778 7.19895448]
+[ 0.71       54.64378667]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plotting-optimal-geometry">
+<h2>Plotting Optimal Geometry<a class="headerlink" href="#plotting-optimal-geometry" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#--------------------------------------------------------------------------#</span>
+<span class="c1">#                   PLOT CORRESPONDING GEOMETRY</span>
+<span class="c1">#--------------------------------------------------------------------------#</span>
+    
+
+<span class="n">X_opt</span> <span class="o">=</span> <span class="n">X_opt_b</span> <span class="c1"># or any other point in the Pareto set</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_opt_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res_b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">detector2</span><span class="o">.</span><span class="n">y_min</span><span class="p">,</span> <span class="n">detector2</span><span class="o">.</span><span class="n">y_max</span><span class="p">)</span>
+
+<span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span> <span class="o">=</span> <span class="n">X_opt</span>
+
+<span class="c1">#R = 0.5</span>
+
+<span class="c1">#------------- GEOMETRY ---------------#</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:::: OPTIMAL GEOMETRY ::::&quot;</span><span class="p">)</span>
+
+<span class="n">tr</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">Tracker</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">z3</span><span class="p">)</span>
+<span class="n">Z</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">create_geometry</span><span class="p">()</span>
+<span class="n">num_wires</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">calculate_wires</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">wires_volume</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
+
+<span class="n">detector2</span><span class="o">.</span><span class="n">geometry_display</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">y_min</span><span class="o">=</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="o">=</span><span class="n">y_max</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pause</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">detector2</span><span class="o">.</span><span class="n">tracks_display</span><span class="p">(</span><span class="n">tracks</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">pause</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#a track is detected if at least two wires have been hit</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">detector2</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">tracks</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">frac_detected</span> <span class="o">=</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fraction of tracks detected: &quot;</span><span class="p">,</span><span class="n">frac_detected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;volume: &quot;</span><span class="p">,</span><span class="n">volume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.66049866 3.0475889  1.70365715 0.26344654 1.6278559  2.05921804
+ 5.82735213 2.20149936]
+[  0.222      142.46456989]
+-10.1 10.1
+:::: OPTIMAL GEOMETRY ::::
+</pre></div>
+</div>
+<img alt="_images/driver_moo_sol2_20_1.png" src="_images/driver_moo_sol2_20_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.778
+volume:  142.46456989061664
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="solution-2">
+<h1>Solution 2<a class="headerlink" href="#solution-2" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">algorithm_10</span> <span class="o">=</span> <span class="n">NSGA2</span><span class="p">(</span><span class="n">pop_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">n_offsprings</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+
+<span class="n">res_10</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span>
+               <span class="n">algorithm_10</span><span class="p">,</span>
+               <span class="p">(</span><span class="s2">&quot;n_gen&quot;</span><span class="p">,</span> <span class="n">num_gen</span><span class="p">),</span>
+               <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+               <span class="n">display</span><span class="o">=</span><span class="n">MyDisplay</span><span class="p">(),</span>
+               <span class="n">save_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+n_gen |  n_eval |     &lt;X&gt;      |     &lt;f1&gt;     |     &lt;f2&gt;    
+============================================================
+    1 |     100 |  3.574631175 |  0.458060000 |  1.62169E+02
+    2 |     110 |  3.548562439 |  0.453700000 |  1.61809E+02
+    3 |     120 |  3.536452034 |  0.451840000 |  1.59320E+02
+    4 |     130 |  3.592482745 |  0.448460000 |  1.58528E+02
+    5 |     140 |  3.549944903 |  0.449080000 |  1.56976E+02
+    6 |     150 |  3.562274101 |  0.442000000 |  1.56608E+02
+    7 |     160 |  3.537540452 |  0.427000000 |  1.60316E+02
+    8 |     170 |  3.535703336 |  0.420500000 |  1.61478E+02
+    9 |     180 |  3.552967297 |  0.407080000 |  1.65447E+02
+   10 |     190 |  3.550491931 |  0.397280000 |  1.69078E+02
+   11 |     200 |  3.532499004 |  0.392000000 |  1.68502E+02
+   12 |     210 |  3.530892395 |  0.382660000 |  1.71313E+02
+   13 |     220 |  3.514088093 |  0.388120000 |  1.70026E+02
+   14 |     230 |  3.483001521 |  0.378700000 |  1.72402E+02
+   15 |     240 |  3.521398394 |  0.371240000 |  1.75885E+02
+   16 |     250 |  3.567569114 |  0.389880000 |  1.67360E+02
+   17 |     260 |  3.556233580 |  0.375960000 |  1.72156E+02
+   18 |     270 |  3.578842488 |  0.376720000 |  1.70604E+02
+   19 |     280 |  3.574245356 |  0.376020000 |  1.70050E+02
+   20 |     290 |  3.547329604 |  0.358500000 |  1.76642E+02
+   21 |     300 |  3.554800157 |  0.378320000 |  1.68675E+02
+   22 |     310 |  3.576445323 |  0.378780000 |  1.67155E+02
+   23 |     320 |  3.602286979 |  0.380960000 |  1.65899E+02
+   24 |     330 |  3.592603625 |  0.368660000 |  1.71960E+02
+   25 |     340 |  3.578729128 |  0.365020000 |  1.71494E+02
+   26 |     350 |  3.604870776 |  0.373240000 |  1.67719E+02
+   27 |     360 |  3.600566544 |  0.364180000 |  1.71365E+02
+   28 |     370 |  3.624045691 |  0.374260000 |  1.66138E+02
+   29 |     380 |  3.596895796 |  0.378860000 |  1.65994E+02
+   30 |     390 |  3.604158736 |  0.370160000 |  1.69381E+02
+   31 |     400 |  3.628262313 |  0.368320000 |  1.68071E+02
+   32 |     410 |  3.601716327 |  0.374540000 |  1.64776E+02
+   33 |     420 |  3.596836810 |  0.377640000 |  1.63554E+02
+   34 |     430 |  3.610206604 |  0.365000000 |  1.68567E+02
+   35 |     440 |  3.608021276 |  0.365100000 |  1.68400E+02
+   36 |     450 |  3.583402298 |  0.359020000 |  1.70166E+02
+   37 |     460 |  3.585179704 |  0.367320000 |  1.66893E+02
+   38 |     470 |  3.590556644 |  0.361020000 |  1.68273E+02
+   39 |     480 |  3.581856818 |  0.359220000 |  1.69406E+02
+   40 |     490 |  3.573328913 |  0.349100000 |  1.73359E+02
+   41 |     500 |  3.562961285 |  0.347540000 |  1.71878E+02
+   42 |     510 |  3.565081882 |  0.342960000 |  1.74428E+02
+   43 |     520 |  3.571561153 |  0.339760000 |  1.74526E+02
+   44 |     530 |  3.562266227 |  0.353740000 |  1.67695E+02
+   45 |     540 |  3.522087971 |  0.360240000 |  1.63738E+02
+   46 |     550 |  3.516861574 |  0.355560000 |  1.65500E+02
+   47 |     560 |  3.530067954 |  0.355440000 |  1.65490E+02
+   48 |     570 |  3.541424350 |  0.353340000 |  1.66644E+02
+   49 |     580 |  3.519274211 |  0.351380000 |  1.67268E+02
+   50 |     590 |  3.560312520 |  0.350240000 |  1.67927E+02
+   51 |     600 |  3.545089760 |  0.347740000 |  1.68726E+02
+   52 |     610 |  3.547132696 |  0.352300000 |  1.66401E+02
+   53 |     620 |  3.558774080 |  0.342960000 |  1.68238E+02
+   54 |     630 |  3.553606062 |  0.354080000 |  1.66089E+02
+   55 |     640 |  3.569286013 |  0.362440000 |  1.61812E+02
+   56 |     650 |  3.560406693 |  0.365900000 |  1.59846E+02
+   57 |     660 |  3.566015615 |  0.362040000 |  1.60572E+02
+   58 |     670 |  3.557677183 |  0.354480000 |  1.63355E+02
+   59 |     680 |  3.529203548 |  0.355680000 |  1.62267E+02
+   60 |     690 |  3.548265021 |  0.348220000 |  1.64003E+02
+   61 |     700 |  3.542170343 |  0.352120000 |  1.62861E+02
+   62 |     710 |  3.549671734 |  0.351840000 |  1.62389E+02
+   63 |     720 |  3.556732354 |  0.358180000 |  1.59003E+02
+   64 |     730 |  3.562686643 |  0.362120000 |  1.57596E+02
+   65 |     740 |  3.565288050 |  0.356900000 |  1.58286E+02
+   66 |     750 |  3.519024509 |  0.345280000 |  1.64334E+02
+   67 |     760 |  3.518052020 |  0.352540000 |  1.60553E+02
+   68 |     770 |  3.494299737 |  0.355920000 |  1.59745E+02
+   69 |     780 |  3.491911242 |  0.360620000 |  1.56937E+02
+   70 |     790 |  3.486548218 |  0.353080000 |  1.59212E+02
+   71 |     800 |  3.495433198 |  0.352700000 |  1.59082E+02
+   72 |     810 |  3.518903504 |  0.357400000 |  1.58611E+02
+   73 |     820 |  3.516944198 |  0.355220000 |  1.59509E+02
+   74 |     830 |  3.502689973 |  0.347640000 |  1.61109E+02
+   75 |     840 |  3.499583323 |  0.346080000 |  1.61093E+02
+   76 |     850 |  3.489465469 |  0.347200000 |  1.60344E+02
+   77 |     860 |  3.491667705 |  0.346260000 |  1.61294E+02
+   78 |     870 |  3.489487123 |  0.351680000 |  1.59938E+02
+   79 |     880 |  3.495308667 |  0.353600000 |  1.58678E+02
+   80 |     890 |  3.500867037 |  0.358720000 |  1.56550E+02
+   81 |     900 |  3.504696063 |  0.357740000 |  1.56654E+02
+   82 |     910 |  3.494059454 |  0.364360000 |  1.54964E+02
+   83 |     920 |  3.501380329 |  0.364300000 |  1.54769E+02
+   84 |     930 |  3.499953101 |  0.361140000 |  1.55052E+02
+   85 |     940 |  3.499935622 |  0.354600000 |  1.56686E+02
+   86 |     950 |  3.501486452 |  0.359800000 |  1.55915E+02
+   87 |     960 |  3.504791882 |  0.363120000 |  1.54768E+02
+   88 |     970 |  3.479758076 |  0.359600000 |  1.56337E+02
+   89 |     980 |  3.495036193 |  0.359200000 |  1.56337E+02
+   90 |     990 |  3.501146692 |  0.359100000 |  1.56289E+02
+   91 |    1000 |  3.495796942 |  0.356080000 |  1.57326E+02
+   92 |    1010 |  3.474288959 |  0.351520000 |  1.59019E+02
+   93 |    1020 |  3.477517154 |  0.361180000 |  1.56359E+02
+   94 |    1030 |  3.485536256 |  0.361660000 |  1.55540E+02
+   95 |    1040 |  3.481530422 |  0.362300000 |  1.55083E+02
+   96 |    1050 |  3.465614338 |  0.359760000 |  1.55628E+02
+   97 |    1060 |  3.488941847 |  0.356900000 |  1.56455E+02
+   98 |    1070 |  3.499985107 |  0.361620000 |  1.55273E+02
+   99 |    1080 |  3.525384784 |  0.360260000 |  1.55758E+02
+  100 |    1090 |  3.533100776 |  0.360260000 |  1.55732E+02
+  101 |    1100 |  3.519937763 |  0.360020000 |  1.55410E+02
+  102 |    1110 |  3.525483476 |  0.359540000 |  1.55321E+02
+  103 |    1120 |  3.527032135 |  0.359240000 |  1.55246E+02
+  104 |    1130 |  3.543525964 |  0.357220000 |  1.57207E+02
+  105 |    1140 |  3.552053542 |  0.363980000 |  1.54171E+02
+  106 |    1150 |  3.555275044 |  0.363940000 |  1.54088E+02
+  107 |    1160 |  3.526222156 |  0.367260000 |  1.51621E+02
+  108 |    1170 |  3.526222156 |  0.367260000 |  1.51621E+02
+  109 |    1180 |  3.519878779 |  0.372240000 |  1.50773E+02
+  110 |    1190 |  3.540940267 |  0.365180000 |  1.52731E+02
+  111 |    1200 |  3.530865061 |  0.367100000 |  1.52175E+02
+  112 |    1210 |  3.555121286 |  0.365040000 |  1.52502E+02
+  113 |    1220 |  3.554618907 |  0.359520000 |  1.55636E+02
+  114 |    1230 |  3.560072224 |  0.353980000 |  1.57941E+02
+  115 |    1240 |  3.567135747 |  0.349700000 |  1.59525E+02
+  116 |    1250 |  3.585549280 |  0.342440000 |  1.62211E+02
+  117 |    1260 |  3.579536641 |  0.342080000 |  1.62186E+02
+  118 |    1270 |  3.552100249 |  0.344440000 |  1.60631E+02
+  119 |    1280 |  3.558451898 |  0.345300000 |  1.60145E+02
+  120 |    1290 |  3.574718369 |  0.343940000 |  1.60268E+02
+  121 |    1300 |  3.559384883 |  0.340320000 |  1.60791E+02
+  122 |    1310 |  3.566317995 |  0.340320000 |  1.60749E+02
+  123 |    1320 |  3.574481874 |  0.343060000 |  1.60406E+02
+  124 |    1330 |  3.569711856 |  0.338380000 |  1.61897E+02
+  125 |    1340 |  3.574735594 |  0.339420000 |  1.61025E+02
+  126 |    1350 |  3.574735594 |  0.339420000 |  1.61025E+02
+  127 |    1360 |  3.570483034 |  0.339360000 |  1.60998E+02
+  128 |    1370 |  3.582402140 |  0.339860000 |  1.60921E+02
+  129 |    1380 |  3.582402140 |  0.339860000 |  1.60921E+02
+  130 |    1390 |  3.615071069 |  0.341640000 |  1.60020E+02
+  131 |    1400 |  3.639352122 |  0.355180000 |  1.56059E+02
+  132 |    1410 |  3.658997928 |  0.357520000 |  1.56077E+02
+  133 |    1420 |  3.663322993 |  0.355420000 |  1.57260E+02
+  134 |    1430 |  3.675429139 |  0.357040000 |  1.57025E+02
+  135 |    1440 |  3.664007938 |  0.355740000 |  1.58285E+02
+  136 |    1450 |  3.672862520 |  0.355660000 |  1.58284E+02
+  137 |    1460 |  3.667205772 |  0.355680000 |  1.58261E+02
+  138 |    1470 |  3.673933595 |  0.357480000 |  1.56931E+02
+  139 |    1480 |  3.669747088 |  0.357440000 |  1.56900E+02
+  140 |    1490 |  3.675848075 |  0.358280000 |  1.56489E+02
+  141 |    1500 |  3.686123573 |  0.358920000 |  1.56183E+02
+  142 |    1510 |  3.697347356 |  0.352760000 |  1.58465E+02
+  143 |    1520 |  3.689005841 |  0.355620000 |  1.56760E+02
+  144 |    1530 |  3.686193501 |  0.354020000 |  1.57525E+02
+  145 |    1540 |  3.677690832 |  0.353920000 |  1.57515E+02
+  146 |    1550 |  3.690771320 |  0.350580000 |  1.58830E+02
+  147 |    1560 |  3.702579500 |  0.350380000 |  1.58863E+02
+  148 |    1570 |  3.705603658 |  0.360140000 |  1.53835E+02
+  149 |    1580 |  3.697216166 |  0.348660000 |  1.58080E+02
+  150 |    1590 |  3.699491642 |  0.346900000 |  1.59188E+02
+  151 |    1600 |  3.703708675 |  0.342200000 |  1.60221E+02
+  152 |    1610 |  3.697627855 |  0.342040000 |  1.60162E+02
+  153 |    1620 |  3.689547500 |  0.341900000 |  1.60262E+02
+  154 |    1630 |  3.702948508 |  0.341320000 |  1.60504E+02
+  155 |    1640 |  3.689305653 |  0.340060000 |  1.60826E+02
+  156 |    1650 |  3.671885630 |  0.341880000 |  1.59833E+02
+  157 |    1660 |  3.683229773 |  0.335880000 |  1.61694E+02
+  158 |    1670 |  3.679515034 |  0.336340000 |  1.61441E+02
+  159 |    1680 |  3.697837943 |  0.334580000 |  1.62289E+02
+  160 |    1690 |  3.698989899 |  0.338220000 |  1.61470E+02
+  161 |    1700 |  3.693525583 |  0.338000000 |  1.61470E+02
+  162 |    1710 |  3.693557595 |  0.338060000 |  1.61186E+02
+  163 |    1720 |  3.695297124 |  0.351200000 |  1.56300E+02
+  164 |    1730 |  3.684365531 |  0.338120000 |  1.60106E+02
+  165 |    1740 |  3.684365531 |  0.338120000 |  1.60106E+02
+  166 |    1750 |  3.676799418 |  0.347580000 |  1.56835E+02
+  167 |    1760 |  3.680800539 |  0.340720000 |  1.61032E+02
+  168 |    1770 |  3.676819951 |  0.341720000 |  1.59149E+02
+  169 |    1780 |  3.679340726 |  0.341680000 |  1.59116E+02
+  170 |    1790 |  3.678555002 |  0.341660000 |  1.59187E+02
+  171 |    1800 |  3.676631955 |  0.344760000 |  1.57304E+02
+  172 |    1810 |  3.662434743 |  0.337060000 |  1.60537E+02
+  173 |    1820 |  3.660697578 |  0.347100000 |  1.57921E+02
+  174 |    1830 |  3.645115965 |  0.347360000 |  1.57908E+02
+  175 |    1840 |  3.622399383 |  0.338260000 |  1.59988E+02
+  176 |    1850 |  3.629545287 |  0.340960000 |  1.59169E+02
+  177 |    1860 |  3.629545287 |  0.340960000 |  1.59169E+02
+  178 |    1870 |  3.619033738 |  0.345000000 |  1.57653E+02
+  179 |    1880 |  3.619937691 |  0.341380000 |  1.58817E+02
+  180 |    1890 |  3.620248924 |  0.333880000 |  1.61511E+02
+  181 |    1900 |  3.626421948 |  0.333760000 |  1.61518E+02
+  182 |    1910 |  3.622229297 |  0.334500000 |  1.61634E+02
+  183 |    1920 |  3.636056453 |  0.333420000 |  1.61708E+02
+  184 |    1930 |  3.653774333 |  0.335160000 |  1.60545E+02
+  185 |    1940 |  3.653962464 |  0.335140000 |  1.60545E+02
+  186 |    1950 |  3.647453145 |  0.336040000 |  1.60451E+02
+  187 |    1960 |  3.641026681 |  0.341740000 |  1.57631E+02
+  188 |    1970 |  3.629284786 |  0.347980000 |  1.55779E+02
+  189 |    1980 |  3.639626019 |  0.348720000 |  1.55617E+02
+  190 |    1990 |  3.636794092 |  0.346800000 |  1.55829E+02
+  191 |    2000 |  3.631236416 |  0.347880000 |  1.54808E+02
+  192 |    2010 |  3.629899534 |  0.347820000 |  1.54531E+02
+  193 |    2020 |  3.628087110 |  0.347720000 |  1.54424E+02
+  194 |    2030 |  3.641260983 |  0.348180000 |  1.54970E+02
+  195 |    2040 |  3.655292848 |  0.347920000 |  1.54966E+02
+  196 |    2050 |  3.644950230 |  0.347820000 |  1.54995E+02
+  197 |    2060 |  3.640407663 |  0.342260000 |  1.57932E+02
+  198 |    2070 |  3.647360808 |  0.344640000 |  1.56660E+02
+  199 |    2080 |  3.657416609 |  0.337960000 |  1.57866E+02
+  200 |    2090 |  3.647617872 |  0.344060000 |  1.56160E+02
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">Scatter</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tracker inefficiency&quot;</span><span class="p">,</span><span class="s2">&quot;volume (proxy of cost)&quot;</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Objective Space&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">res_10</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymoo.visualization.scatter.Scatter at 0x7fbf30bda6d0&gt;
+</pre></div>
+</div>
+<img alt="_images/driver_moo_sol2_23_1.png" src="_images/driver_moo_sol2_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#-----------------------------------#</span>
+<span class="c1">#              Metrics              #</span>
+<span class="c1">#-----------------------------------#</span>
+<span class="c1">#------------------------------------------------------------------------------#</span>
+
+
+<span class="n">n_evals_10</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># corresponding number of function evaluations\</span>
+<span class="n">F_10</span> <span class="o">=</span> <span class="p">[]</span>          <span class="c1"># the objective space values in each generation</span>
+<span class="n">cv_10</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># constraint violation in each generation</span>
+
+
+<span class="c1"># iterate over the deepcopies of algorithms</span>
+<span class="k">for</span> <span class="n">algorithm_10</span> <span class="ow">in</span> <span class="n">res_10</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
+
+    <span class="c1"># store the number of function evaluations</span>
+    <span class="n">n_evals_10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm_10</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">n_eval</span><span class="p">)</span>
+
+    <span class="c1"># retrieve the optimum from the algorithm</span>
+    <span class="n">opt_10</span> <span class="o">=</span> <span class="n">algorithm_10</span><span class="o">.</span><span class="n">opt</span>
+
+    <span class="c1"># store the least contraint violation in this generation (in case this happens)</span>
+    <span class="n">cv_10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt_10</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CV&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+    <span class="c1"># filter out only the feasible and append</span>
+    <span class="n">feas_10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">opt_10</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;feasible&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">_F_10</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)[</span><span class="n">feas_10</span><span class="p">]</span>
+    <span class="n">F_10</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_F_10</span><span class="p">)</span>
+
+
+<span class="c1"># MODIFY - this is problem dependent: </span>
+<span class="c1"># you can choose any reasonable reference point and calculate the hypervolume with respect to that point. </span>
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="c1"># create the performance indicator object with reference point</span>
+<span class="n">metric_10</span> <span class="o">=</span> <span class="n">get_performance_indicator</span><span class="p">(</span><span class="s2">&quot;hv&quot;</span><span class="p">,</span> <span class="n">ref_point</span><span class="o">=</span><span class="n">ref_point</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># modified to be compatible with pymoo 0.5.0</span>
+
+
+<span class="c1"># calculate for each generation the HV metric</span>
+<span class="n">hv_10</span> <span class="o">=</span> <span class="p">[</span><span class="n">metric_10</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">F_10</span><span class="p">]</span>  <span class="c1">#F, or res.F , Also in pymoo 0.5.0 it is metric.do(A) not metric.calc(A)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> 
+<span class="c1"># visualize the convergence curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_evals</span><span class="p">,</span> <span class="n">hv</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_evals_10</span><span class="p">,</span> <span class="n">hv_10</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Convergence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Function Evaluations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hypervolume&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/driver_moo_sol2_24_0.png" src="_images/driver_moo_sol2_24_0.png" />
+</div>
+</div>
+<p>— Extend range of Radius and add constraint in the problem—</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyProblem2</span><span class="p">(</span><span class="n">ElementwiseProblem</span><span class="p">):</span>
+
+    <span class="c1">#--------- vectorized ---------#</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">n_var</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                         <span class="n">n_obj</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                         <span class="n">n_constr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                         <span class="n">xl</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">2.</span><span class="p">]),</span>
+                         <span class="n">xu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">4.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">10.</span><span class="p">]))</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+
+        <span class="n">f1</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">-</span><span class="n">res_o</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">res_o</span><span class="o">.</span><span class="n">get_volume</span><span class="p">()</span>
+
+        <span class="c1">#if you had constraints</span>
+        <span class="n">g1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+        <span class="c1">#g2 = gu2(x), etc. </span>
+
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]</span>
+        <span class="n">out</span><span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">g1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem_c</span> <span class="o">=</span> <span class="n">MyProblem2</span><span class="p">()</span>
+
+
+<span class="n">num_gen</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="n">algorithm_c</span> <span class="o">=</span> <span class="n">NSGA2</span><span class="p">(</span><span class="n">pop_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">n_offsprings</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+
+
+<span class="n">res_c</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">problem_c</span><span class="p">,</span>
+               <span class="n">algorithm_c</span><span class="p">,</span>
+               <span class="p">(</span><span class="s2">&quot;n_gen&quot;</span><span class="p">,</span> <span class="n">num_gen</span><span class="p">),</span>
+               <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+               <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+               <span class="n">save_history</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=====================================================================================
+n_gen |  n_eval |   cv (min)   |   cv (avg)   |  n_nds  |     eps      |  indicator  
+=====================================================================================
+    1 |     100 |  0.00000E+00 |  0.00000E+00 |      19 |            - |            -
+    2 |     120 |  0.00000E+00 |  0.00000E+00 |      22 |  0.004465988 |            f
+    3 |     140 |  0.00000E+00 |  0.00000E+00 |      26 |  0.008708993 |            f
+    4 |     160 |  0.00000E+00 |  0.00000E+00 |      28 |  0.010735652 |        ideal
+    5 |     180 |  0.00000E+00 |  0.00000E+00 |      28 |  0.002378949 |            f
+    6 |     200 |  0.00000E+00 |  0.00000E+00 |      31 |  0.005128205 |        ideal
+    7 |     220 |  0.00000E+00 |  0.00000E+00 |      32 |  0.001622761 |            f
+    8 |     240 |  0.00000E+00 |  0.00000E+00 |      33 |  0.002330470 |            f
+    9 |     260 |  0.00000E+00 |  0.00000E+00 |      37 |  0.004028219 |            f
+   10 |     280 |  0.00000E+00 |  0.00000E+00 |      38 |  0.003250614 |            f
+   11 |     300 |  0.00000E+00 |  0.00000E+00 |      39 |  0.002038082 |            f
+   12 |     320 |  0.00000E+00 |  0.00000E+00 |      37 |  0.004184264 |            f
+   13 |     340 |  0.00000E+00 |  0.00000E+00 |      39 |  0.003139807 |            f
+   14 |     360 |  0.00000E+00 |  0.00000E+00 |      42 |  0.003625776 |            f
+   15 |     380 |  0.00000E+00 |  0.00000E+00 |      41 |  0.003177471 |            f
+   16 |     400 |  0.00000E+00 |  0.00000E+00 |      43 |  0.002215741 |            f
+   17 |     420 |  0.00000E+00 |  0.00000E+00 |      44 |  0.001102719 |            f
+   18 |     440 |  0.00000E+00 |  0.00000E+00 |      44 |  0.002013127 |            f
+   19 |     460 |  0.00000E+00 |  0.00000E+00 |      44 |  0.002108495 |            f
+   20 |     480 |  0.00000E+00 |  0.00000E+00 |      43 |  0.001886322 |            f
+   21 |     500 |  0.00000E+00 |  0.00000E+00 |      46 |  0.001336842 |            f
+   22 |     520 |  0.00000E+00 |  0.00000E+00 |      46 |  0.000667736 |            f
+   23 |     540 |  0.00000E+00 |  0.00000E+00 |      49 |  0.064053928 |        nadir
+   24 |     560 |  0.00000E+00 |  0.00000E+00 |      44 |  0.001922552 |            f
+   25 |     580 |  0.00000E+00 |  0.00000E+00 |      47 |  0.001443627 |            f
+   26 |     600 |  0.00000E+00 |  0.00000E+00 |      46 |  0.002278565 |            f
+   27 |     620 |  0.00000E+00 |  0.00000E+00 |      49 |  0.000974810 |            f
+   28 |     640 |  0.00000E+00 |  0.00000E+00 |      45 |  0.018276762 |        nadir
+   29 |     660 |  0.00000E+00 |  0.00000E+00 |      47 |  0.017948718 |        nadir
+   30 |     680 |  0.00000E+00 |  0.00000E+00 |      50 |  0.003137905 |            f
+   31 |     700 |  0.00000E+00 |  0.00000E+00 |      51 |  0.001137482 |            f
+   32 |     720 |  0.00000E+00 |  0.00000E+00 |      50 |  0.002162214 |            f
+   33 |     740 |  0.00000E+00 |  0.00000E+00 |      49 |  0.042780749 |        nadir
+   34 |     760 |  0.00000E+00 |  0.00000E+00 |      50 |  0.000518034 |            f
+   35 |     780 |  0.00000E+00 |  0.00000E+00 |      52 |  0.000478067 |            f
+   36 |     800 |  0.00000E+00 |  0.00000E+00 |      51 |  0.000456117 |            f
+   37 |     820 |  0.00000E+00 |  0.00000E+00 |      51 |  0.001020212 |            f
+   38 |     840 |  0.00000E+00 |  0.00000E+00 |      52 |  0.001667519 |            f
+   39 |     860 |  0.00000E+00 |  0.00000E+00 |      51 |  0.053238158 |        nadir
+   40 |     880 |  0.00000E+00 |  0.00000E+00 |      49 |  0.001606321 |            f
+   41 |     900 |  0.00000E+00 |  0.00000E+00 |      50 |  0.000053476 |            f
+   42 |     920 |  0.00000E+00 |  0.00000E+00 |      49 |  0.000491106 |            f
+   43 |     940 |  0.00000E+00 |  0.00000E+00 |      48 |  0.000509867 |            f
+   44 |     960 |  0.00000E+00 |  0.00000E+00 |      49 |  0.000380231 |            f
+   45 |     980 |  0.00000E+00 |  0.00000E+00 |      53 |  0.001559460 |            f
+   46 |    1000 |  0.00000E+00 |  0.00000E+00 |      52 |  0.000359934 |            f
+   47 |    1020 |  0.00000E+00 |  0.00000E+00 |      54 |  0.010582011 |        nadir
+   48 |    1040 |  0.00000E+00 |  0.00000E+00 |      53 |  0.000113221 |            f
+   49 |    1060 |  0.00000E+00 |  0.00000E+00 |      52 |  0.001862194 |            f
+   50 |    1080 |  0.00000E+00 |  0.00000E+00 |      52 |  0.000309785 |            f
+   51 |    1100 |  0.00000E+00 |  0.00000E+00 |      56 |  0.001753224 |            f
+   52 |    1120 |  0.00000E+00 |  0.00000E+00 |      53 |  0.000568097 |            f
+   53 |    1140 |  0.00000E+00 |  0.00000E+00 |      55 |  0.000311393 |            f
+   54 |    1160 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000579182 |            f
+   55 |    1180 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000371748 |            f
+   56 |    1200 |  0.00000E+00 |  0.00000E+00 |      55 |  0.001253532 |            f
+   57 |    1220 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000124440 |            f
+   58 |    1240 |  0.00000E+00 |  0.00000E+00 |      55 |  0.000084768 |            f
+   59 |    1260 |  0.00000E+00 |  0.00000E+00 |      53 |  0.000754332 |            f
+   60 |    1280 |  0.00000E+00 |  0.00000E+00 |      54 |  0.000365011 |            f
+   61 |    1300 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000435319 |            f
+   62 |    1320 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000647945 |            f
+   63 |    1340 |  0.00000E+00 |  0.00000E+00 |      59 |  0.000141080 |            f
+   64 |    1360 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000290308 |            f
+   65 |    1380 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000915116 |            f
+   66 |    1400 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000788498 |            f
+   67 |    1420 |  0.00000E+00 |  0.00000E+00 |      64 |  0.00000E+00 |            f
+   68 |    1440 |  0.00000E+00 |  0.00000E+00 |      58 |  0.010471204 |        nadir
+   69 |    1460 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000173962 |            f
+   70 |    1480 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000493499 |            f
+   71 |    1500 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000437794 |            f
+   72 |    1520 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000590044 |            f
+   73 |    1540 |  0.00000E+00 |  0.00000E+00 |      67 |  0.000341752 |            f
+   74 |    1560 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000935002 |            f
+   75 |    1580 |  0.00000E+00 |  0.00000E+00 |      65 |  0.00000E+00 |            f
+   76 |    1600 |  0.00000E+00 |  0.00000E+00 |      66 |  0.000240154 |            f
+   77 |    1620 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000560263 |            f
+   78 |    1640 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000507585 |            f
+   79 |    1660 |  0.00000E+00 |  0.00000E+00 |      67 |  0.000667783 |            f
+   80 |    1680 |  0.00000E+00 |  0.00000E+00 |      67 |  0.000156947 |            f
+   81 |    1700 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000763036 |            f
+   82 |    1720 |  0.00000E+00 |  0.00000E+00 |      67 |  0.000782966 |            f
+   83 |    1740 |  0.00000E+00 |  0.00000E+00 |      70 |  0.013262599 |        nadir
+   84 |    1760 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000409138 |            f
+   85 |    1780 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000218472 |            f
+   86 |    1800 |  0.00000E+00 |  0.00000E+00 |      66 |  0.039830220 |        nadir
+   87 |    1820 |  0.00000E+00 |  0.00000E+00 |      68 |  0.000988967 |            f
+   88 |    1840 |  0.00000E+00 |  0.00000E+00 |      63 |  0.001002859 |            f
+   89 |    1860 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000564731 |            f
+   90 |    1880 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000423039 |            f
+   91 |    1900 |  0.00000E+00 |  0.00000E+00 |      62 |  0.066831683 |        nadir
+   92 |    1920 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000396467 |            f
+   93 |    1940 |  0.00000E+00 |  0.00000E+00 |      62 |  0.022784810 |        nadir
+   94 |    1960 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000321776 |            f
+   95 |    1980 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000079114 |            f
+   96 |    2000 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000285947 |            f
+   97 |    2020 |  0.00000E+00 |  0.00000E+00 |      64 |  0.002538071 |        nadir
+   98 |    2040 |  0.00000E+00 |  0.00000E+00 |      64 |  0.002124448 |            f
+   99 |    2060 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000246096 |            f
+  100 |    2080 |  0.00000E+00 |  0.00000E+00 |      66 |  0.000213349 |            f
+  101 |    2100 |  0.00000E+00 |  0.00000E+00 |      62 |  0.026041667 |        nadir
+  102 |    2120 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000895705 |            f
+  103 |    2140 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000480528 |            f
+  104 |    2160 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000616687 |            f
+  105 |    2180 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000084425 |            f
+  106 |    2200 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000210575 |            f
+  107 |    2220 |  0.00000E+00 |  0.00000E+00 |      59 |  0.000392181 |            f
+  108 |    2240 |  0.00000E+00 |  0.00000E+00 |      59 |  0.000843625 |            f
+  109 |    2260 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000641635 |            f
+  110 |    2280 |  0.00000E+00 |  0.00000E+00 |      58 |  0.000397612 |            f
+  111 |    2300 |  0.00000E+00 |  0.00000E+00 |      60 |  0.001051601 |            f
+  112 |    2320 |  0.00000E+00 |  0.00000E+00 |      59 |  0.048360902 |        nadir
+  113 |    2340 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000228810 |            f
+  114 |    2360 |  0.00000E+00 |  0.00000E+00 |      56 |  0.001054309 |            f
+  115 |    2380 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000150062 |            f
+  116 |    2400 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000279018 |            f
+  117 |    2420 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000358405 |            f
+  118 |    2440 |  0.00000E+00 |  0.00000E+00 |      59 |  0.001092120 |            f
+  119 |    2460 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000265603 |            f
+  120 |    2480 |  0.00000E+00 |  0.00000E+00 |      59 |  0.000372094 |            f
+  121 |    2500 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000779735 |            f
+  122 |    2520 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000167007 |            f
+  123 |    2540 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000751055 |            f
+  124 |    2560 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000322189 |            f
+  125 |    2580 |  0.00000E+00 |  0.00000E+00 |      60 |  0.035040431 |        nadir
+  126 |    2600 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000981775 |            f
+  127 |    2620 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000398447 |            f
+  128 |    2640 |  0.00000E+00 |  0.00000E+00 |      61 |  0.030881477 |        nadir
+  129 |    2660 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000139690 |            f
+  130 |    2680 |  0.00000E+00 |  0.00000E+00 |      61 |  0.236916814 |        nadir
+  131 |    2700 |  0.00000E+00 |  0.00000E+00 |      59 |  0.000045933 |            f
+  132 |    2720 |  0.00000E+00 |  0.00000E+00 |      55 |  0.001516700 |            f
+  133 |    2740 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000052573 |            f
+  134 |    2760 |  0.00000E+00 |  0.00000E+00 |      58 |  0.00000E+00 |            f
+  135 |    2780 |  0.00000E+00 |  0.00000E+00 |      55 |  0.000150153 |            f
+  136 |    2800 |  0.00000E+00 |  0.00000E+00 |      53 |  0.001413477 |            f
+  137 |    2820 |  0.00000E+00 |  0.00000E+00 |      51 |  0.001228342 |            f
+  138 |    2840 |  0.00000E+00 |  0.00000E+00 |      49 |  0.000744964 |            f
+  139 |    2860 |  0.00000E+00 |  0.00000E+00 |      50 |  0.001724486 |            f
+  140 |    2880 |  0.00000E+00 |  0.00000E+00 |      51 |  0.000331098 |            f
+  141 |    2900 |  0.00000E+00 |  0.00000E+00 |      53 |  0.000764467 |            f
+  142 |    2920 |  0.00000E+00 |  0.00000E+00 |      53 |  0.00000E+00 |            f
+  143 |    2940 |  0.00000E+00 |  0.00000E+00 |      55 |  0.010666608 |        nadir
+  144 |    2960 |  0.00000E+00 |  0.00000E+00 |      57 |  0.001007603 |            f
+  145 |    2980 |  0.00000E+00 |  0.00000E+00 |      58 |  0.000140033 |            f
+  146 |    3000 |  0.00000E+00 |  0.00000E+00 |      61 |  0.001610753 |            f
+  147 |    3020 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000748306 |            f
+  148 |    3040 |  0.00000E+00 |  0.00000E+00 |      55 |  0.000967130 |            f
+  149 |    3060 |  0.00000E+00 |  0.00000E+00 |      54 |  0.000256354 |            f
+  150 |    3080 |  0.00000E+00 |  0.00000E+00 |      55 |  0.000465174 |            f
+  151 |    3100 |  0.00000E+00 |  0.00000E+00 |      53 |  0.002717391 |        nadir
+  152 |    3120 |  0.00000E+00 |  0.00000E+00 |      53 |  0.000051272 |            f
+  153 |    3140 |  0.00000E+00 |  0.00000E+00 |      54 |  0.005464481 |        nadir
+  154 |    3160 |  0.00000E+00 |  0.00000E+00 |      54 |  0.000414602 |            f
+  155 |    3180 |  0.00000E+00 |  0.00000E+00 |      52 |  0.000223745 |            f
+  156 |    3200 |  0.00000E+00 |  0.00000E+00 |      52 |  0.000677147 |            f
+  157 |    3220 |  0.00000E+00 |  0.00000E+00 |      55 |  0.002042506 |            f
+  158 |    3240 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000493391 |            f
+  159 |    3260 |  0.00000E+00 |  0.00000E+00 |      56 |  0.000347388 |            f
+  160 |    3280 |  0.00000E+00 |  0.00000E+00 |      57 |  0.000158875 |            f
+  161 |    3300 |  0.00000E+00 |  0.00000E+00 |      59 |  0.002739726 |        nadir
+  162 |    3320 |  0.00000E+00 |  0.00000E+00 |      60 |  0.000430999 |            f
+  163 |    3340 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000678621 |            f
+  164 |    3360 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000110043 |            f
+  165 |    3380 |  0.00000E+00 |  0.00000E+00 |      63 |  0.000751071 |            f
+  166 |    3400 |  0.00000E+00 |  0.00000E+00 |      62 |  0.000372495 |            f
+  167 |    3420 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000392419 |            f
+  168 |    3440 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000210327 |            f
+  169 |    3460 |  0.00000E+00 |  0.00000E+00 |      67 |  0.000638621 |            f
+  170 |    3480 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000690209 |            f
+  171 |    3500 |  0.00000E+00 |  0.00000E+00 |      71 |  0.00000E+00 |            f
+  172 |    3520 |  0.00000E+00 |  0.00000E+00 |      72 |  0.000270116 |            f
+  173 |    3540 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000323244 |            f
+  174 |    3560 |  0.00000E+00 |  0.00000E+00 |      74 |  0.001091393 |            f
+  175 |    3580 |  0.00000E+00 |  0.00000E+00 |      73 |  0.000526037 |            f
+  176 |    3600 |  0.00000E+00 |  0.00000E+00 |      72 |  0.000097135 |            f
+  177 |    3620 |  0.00000E+00 |  0.00000E+00 |      77 |  0.000417418 |            f
+  178 |    3640 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000797956 |            f
+  179 |    3660 |  0.00000E+00 |  0.00000E+00 |      71 |  0.00000E+00 |            f
+  180 |    3680 |  0.00000E+00 |  0.00000E+00 |      71 |  0.00000E+00 |            f
+  181 |    3700 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000178064 |            f
+  182 |    3720 |  0.00000E+00 |  0.00000E+00 |      73 |  0.00000E+00 |            f
+  183 |    3740 |  0.00000E+00 |  0.00000E+00 |      73 |  0.00000E+00 |            f
+  184 |    3760 |  0.00000E+00 |  0.00000E+00 |      67 |  0.001667011 |            f
+  185 |    3780 |  0.00000E+00 |  0.00000E+00 |      61 |  0.078282828 |        nadir
+  186 |    3800 |  0.00000E+00 |  0.00000E+00 |      62 |  0.081967213 |        nadir
+  187 |    3820 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000207022 |            f
+  188 |    3840 |  0.00000E+00 |  0.00000E+00 |      61 |  0.000330602 |            f
+  189 |    3860 |  0.00000E+00 |  0.00000E+00 |      64 |  0.000528866 |            f
+  190 |    3880 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000355636 |            f
+  191 |    3900 |  0.00000E+00 |  0.00000E+00 |      64 |  0.022539233 |        nadir
+  192 |    3920 |  0.00000E+00 |  0.00000E+00 |      64 |  0.00000E+00 |            f
+  193 |    3940 |  0.00000E+00 |  0.00000E+00 |      65 |  0.000042962 |            f
+  194 |    3960 |  0.00000E+00 |  0.00000E+00 |      66 |  0.001099252 |            f
+  195 |    3980 |  0.00000E+00 |  0.00000E+00 |      68 |  0.019825378 |        nadir
+  196 |    4000 |  0.00000E+00 |  0.00000E+00 |      68 |  0.000242570 |            f
+  197 |    4020 |  0.00000E+00 |  0.00000E+00 |      69 |  0.000042069 |            f
+  198 |    4040 |  0.00000E+00 |  0.00000E+00 |      71 |  0.000169908 |            f
+  199 |    4060 |  0.00000E+00 |  0.00000E+00 |      73 |  0.00000E+00 |            f
+  200 |    4080 |  0.00000E+00 |  0.00000E+00 |      74 |  0.000416125 |            f
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span> <span class="o">=</span> <span class="n">Scatter</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tracker inefficiency&quot;</span><span class="p">,</span><span class="s2">&quot;volume (proxy of cost)&quot;</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Objective Space&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">res_c</span><span class="o">.</span><span class="n">F</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymoo.visualization.scatter.Scatter at 0x7fbf2ec03710&gt;
+</pre></div>
+</div>
+<img alt="_images/driver_moo_sol2_28_1.png" src="_images/driver_moo_sol2_28_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_evals_c</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># corresponding number of function evaluations\</span>
+<span class="n">F_c</span> <span class="o">=</span> <span class="p">[]</span>          <span class="c1"># the objective space values in each generation</span>
+<span class="n">cv_c</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># constraint violation in each generation</span>
+
+
+<span class="c1"># iterate over the deepcopies of algorithms</span>
+<span class="k">for</span> <span class="n">algorithm_c</span> <span class="ow">in</span> <span class="n">res_c</span><span class="o">.</span><span class="n">history</span><span class="p">:</span>
+
+    <span class="c1"># store the number of function evaluations</span>
+    <span class="n">n_evals_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algorithm_c</span><span class="o">.</span><span class="n">evaluator</span><span class="o">.</span><span class="n">n_eval</span><span class="p">)</span>
+
+    <span class="c1"># retrieve the optimum from the algorithm</span>
+    <span class="n">opt_c</span> <span class="o">=</span> <span class="n">algorithm_c</span><span class="o">.</span><span class="n">opt</span>
+
+    <span class="c1"># store the least contraint violation in this generation (in case this happens)</span>
+    <span class="n">cv_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">opt_c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CV&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+
+    <span class="c1"># filter out only the feasible and append</span>
+    <span class="n">feas_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">opt_c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;feasible&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">_F_c</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)[</span><span class="n">feas_c</span><span class="p">]</span>
+    <span class="n">F_c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_F_c</span><span class="p">)</span>
+
+
+<span class="c1"># MODIFY - this is problem dependent: </span>
+<span class="c1"># you can choose any reasonable reference point and calculate the hypervolume with respect to that point. </span>
+<span class="n">ref_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="c1"># create the performance indicator object with reference point</span>
+<span class="n">metric_c</span> <span class="o">=</span> <span class="n">get_performance_indicator</span><span class="p">(</span><span class="s2">&quot;hv&quot;</span><span class="p">,</span> <span class="n">ref_point</span><span class="o">=</span><span class="n">ref_point</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># modified to be compatible with pymoo 0.5.0</span>
+
+
+<span class="c1"># calculate for each generation the HV metric</span>
+<span class="n">hv_c</span> <span class="o">=</span> <span class="p">[</span><span class="n">metric_c</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">F_c</span><span class="p">]</span>  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span> 
+<span class="c1"># visualize the convergence curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_evals</span><span class="p">,</span> <span class="n">hv_c</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Convergence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Function Evaluations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hypervolume&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/driver_moo_sol2_29_0.png" src="_images/driver_moo_sol2_29_0.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cfteach/ml4hep",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "virt3.6"
+        },
+        kernelOptions: {
+            kernelName: "virt3.6",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'virt3.6'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="exe3a_moo_EA_3obj.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">MOEA</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exe3b_moo_BO_3obj.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MOBO</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By CFanelli<br/>
+  
+      &copy; Copyright 2023.<br/>
+    <div class="extra_footer">
+      Footer title
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
