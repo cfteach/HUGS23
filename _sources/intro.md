@@ -1,12 +1,8 @@
 # Welcome
 
-This website hosts a mini-course on XXXXX, taught at XXXXX workshop at XXXXX.
+This website hosts a mini-series of lectures on AI/ML for Nuclear Physics and the Electron Ion Collider, taught at HUGS2023.
 
-THis is the introduction page. 
+This is the introduction page. You can navigate the lectures contained in this book.
 
-```{figure} ./images/School_logo.png
----
-width: 600px
-name: fig-layout
----
-```
+
+[![Figure Label](./images/HUGSwebheaderREV.jpeg)](https://www.jlab.org/conference/hugs2023)
