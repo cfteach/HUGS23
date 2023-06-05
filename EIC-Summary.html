@@ -78,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="visually-hidden">Toggle in-page Table of Contents</div>
 </label>
 <!-- Headers at the top -->
-<div class="announcement header-item noprint">(in progress)</div>
+<div class="announcement header-item noprint">HUGS2023---Machine Learning for Nuclear Physics and the Electron Ion Collider</div>
 <div class="header header-item noprint"></div>
 
     
@@ -120,19 +120,39 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Exercise 1
+  Lectures
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="driver_bo.html">
-   Create detector geometry and simulate tracks
+  <a class="reference external" href="https://docs.google.com/presentation/d/1fL4yGqDfJyvMDVS48uZfi3lWzBkn-dbBYwgkxTkNqmo/edit?usp=sharing">
+   (Lec 1) AI/ML - A high-bias, low-variance introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://docs.google.com/presentation/d/1EczgRRjV-e5xOAGEVC3c4fKz4I2D5D_p0HR5vfLR66M/edit?usp=sharing">
+   (Lec 2) How AI/ML is influencing ongoing experiments at Jefferson Lab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://docs.google.com/presentation/d/1TvD0Yv2rAN_eFn178VUPJiJCzG4cS7bF_7RuQVb47Do/edit?usp=sharing">
+   (Lec 3) Leveraging AI/ML for the future Electron Ion Collider
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://docs.google.com/presentation/d/1hKIr1T-cSQHIugyEATlRRB4CuG7LSJVZAZY7VLs7pq4/edit?usp=sharing">
+   (Lec 4) ePIC at EIC – The First Large-Scale Experiment Designed with AI Assistance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://docs.google.com/presentation/d/1TRf3GdxImO2R5GiUuyI1UTf1LAvK34qwbx5CsjinFUA/edit?usp=sharing">
+   (Lec 5) Future trends
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Exercise 2
+  Tutorials
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -142,18 +162,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="driver_moo_sol2.html">
-   Create detector geometry and simulate tracks
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Exercise 3
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
   <a class="reference internal" href="exe3b_moo_BO_3obj.html">
    MOBO
   </a>
@@ -161,38 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  ECCE-EIC Case
+  Other References
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="EIC-Intro.html">
-   AI Assisted Tracker
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="EIC-Tracking.html">
-   EIC Tracking system
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="EIC-TrackerObj_Cons.html">
-   Metrics of Performance
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="EIC-TrackerParameterization.html">
-   Parameterizing the tracker
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="EIC-DevelopedPipeline.html">
-   The optimization pipeline
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="EIC-Visualization.html">
-   Navigating through solutions
+   Interactively Navigate the Pareto Front of the EIC Tracker
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -399,15 +382,14 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>EIC is one of the first experiments to be designed with the support of AI.</p></li>
-<li><p>The current tracking system at EIC is an <a class="reference external" href="https://doi.org/10.48550/arXiv.2205.09185">AI-assisted design</a></p></li>
+<li><p>EIC will be the first large-scale experiment to be designed with the support of AI.</p></li>
+<li><p>The tracking system at EIC <a class="reference external" href="https://doi.org/10.48550/arXiv.2205.09185">AI-assisted design</a></p></li>
 <li><p>For the “first” time a framework integrating the full detector design using Geant4-based simulation coupled to MOO has been developed. This framework can be massively parallelized.</p>
 <ul>
-<li><p>Modular framework : applicable to EIC Detector - 1.</p></li>
 <li><p>Pareto solutions can be explored post hoc and decision making can be done based on cost, engineering realisation etc.</p></li>
 </ul>
 </li>
-<li><p>The EIC tracker optimisation is a continuous and an iterative process. AI had assisted in making technological choices for the tracker design.</p></li>
+<li><p>The EIC tracker optimisation is a continuous and an iterative process. AI had assisted in making technological choices for the tracker design and will be extended to the ePIC integrated detector.</p></li>
 </ul>
 </section>
 
