@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MOEA &#8212; &lt;a href=&#34;https://eic.ai&#34;&gt;AI/ML for Nuclear Physics and the Electron Ion Collider&lt;/a&gt;</title>
+    <title>(tutorial 2a): MOGA &#8212; &lt;a href=&#34;https://eic.ai&#34;&gt;AI/ML for Nuclear Physics and the Electron Ion Collider&lt;/a&gt;</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MOBO" href="exe3b_moo_BO_3obj.html" />
+    <link rel="next" title="Tutorial 2b: MOBO" href="exe3b_moo_BO_3obj.html" />
     <link rel="prev" title="Welcome" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -159,12 +159,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   MOEA
+   (Tut 2 - part a) MOEA using pymoo
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exe3b_moo_BO_3obj.html">
-   MOBO
+   (Tut 2 - part b) MOBO using Ax
   </a>
  </li>
 </ul>
@@ -182,6 +182,23 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="EIC-Summary.html">
    Summary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Datasets
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://drive.google.com/file/d/1Z-lUTZrHoqeKsYHf34gR3kF45bVM6XG7/view">
+   all-h1-rapgap.root
   </a>
  </li>
 </ul>
@@ -461,50 +478,48 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moea">
    MOEA
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">
-     Create detector geometry and simulate tracks
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">
+   Create detector geometry and simulate tracks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-parameters">
+     LIST OF PARAMETERS
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#list-of-parameters">
-       LIST OF PARAMETERS
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-objectives">
-       Define Objectives
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-objectives">
+     Define Objectives
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multi-objective-optimization">
    Multi-Objective Optimization
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">
      Creation of Problem and choice of optimization algorithm.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analysis-of-results">
-     Analysis of Results
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise-3">
-   Exercise 3
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-results">
+   Analysis of Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-extra">
+   Exercise 3 (extra)
   </a>
  </li>
 </ul>
@@ -516,7 +531,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MOEA</h1>
+                <h1>(tutorial 2a): MOGA</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -526,50 +541,48 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moea">
    MOEA
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">
-     Create detector geometry and simulate tracks
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">
+   Create detector geometry and simulate tracks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-of-parameters">
+     LIST OF PARAMETERS
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#list-of-parameters">
-       LIST OF PARAMETERS
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#define-objectives">
-       Define Objectives
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#define-objectives">
+     Define Objectives
+    </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multi-objective-optimization">
    Multi-Objective Optimization
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">
      Creation of Problem and choice of optimization algorithm.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#analysis-of-results">
-     Analysis of Results
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise-3">
-   Exercise 3
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis-of-results">
+   Analysis of Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-extra">
+   Exercise 3 (extra)
   </a>
  </li>
 </ul>
@@ -582,8 +595,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="moea">
-<h1>MOEA<a class="headerlink" href="#moea" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2a-moga">
+<h1>(tutorial 2a): MOGA<a class="headerlink" href="#tutorial-2a-moga" title="Permalink to this headline">#</a></h1>
+<section id="moea">
+<h2>MOEA<a class="headerlink" href="#moea" title="Permalink to this headline">#</a></h2>
 <p>This section is an example for MultiObjective Optimization using Evolutionary Algorithm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -760,6 +775,7 @@ Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python3.7/d
 </div>
 </div>
 </div>
+</section>
 <section id="create-detector-geometry-and-simulate-tracks">
 <h2>Create detector geometry and simulate tracks<a class="headerlink" href="#create-detector-geometry-and-simulate-tracks" title="Permalink to this headline">#</a></h2>
 <p>The module detector creates a simple 2D geometry of a wire based tracker made by 4 planes.</p>
@@ -835,8 +851,8 @@ R, pitch, y1, y2, y3, z1, z2, z3:  0.5 4.0 0.0 0.0 0.0 2.0 4.0 6.0
 :::: TRACK GENERATION ::::
 </pre></div>
 </div>
-<img alt="_images/exe3a_moo_EA_3obj_4_1.png" src="_images/exe3a_moo_EA_3obj_4_1.png" />
-<img alt="_images/exe3a_moo_EA_3obj_4_2.png" src="_images/exe3a_moo_EA_3obj_4_2.png" />
+<img alt="_images/exe3a_moo_EA_3obj_5_1.png" src="_images/exe3a_moo_EA_3obj_5_1.png" />
+<img alt="_images/exe3a_moo_EA_3obj_5_2.png" src="_images/exe3a_moo_EA_3obj_5_2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.264
 resolution:  0.24613882479204957
 </pre></div>
@@ -923,10 +939,9 @@ resolution:  0.24613882479204957
 </div>
 </section>
 </section>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="multi-objective-optimization">
-<h1>Multi-Objective Optimization<a class="headerlink" href="#multi-objective-optimization" title="Permalink to this headline">#</a></h1>
+<section id="multi-objective-optimization">
+<h2>Multi-Objective Optimization<a class="headerlink" href="#multi-objective-optimization" title="Permalink to this headline">#</a></h2>
 <p>We will be using pymoo (<a class="reference external" href="https://pymoo.org/getting_started.html">https://pymoo.org/getting_started.html</a>).</p>
 <ul class="simple">
 <li><p>In the constructor method we specify number of variables N, objectives M, and constraint functions, as well as the lower and upper boundaries of each variable. In our toy model, these boundaries are taken in such a way that all solutions are feasible and no constraint function is needed. You can try to change this and introduce some constraint.</p></li>
@@ -962,7 +977,7 @@ resolution:  0.24613882479204957
 </div>
 </div>
 <section id="creation-of-problem-and-choice-of-optimization-algorithm">
-<h2>Creation of Problem and choice of optimization algorithm.<a class="headerlink" href="#creation-of-problem-and-choice-of-optimization-algorithm" title="Permalink to this headline">#</a></h2>
+<h3>Creation of Problem and choice of optimization algorithm.<a class="headerlink" href="#creation-of-problem-and-choice-of-optimization-algorithm" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>We will use NSGA-II, as explained in the lectures. You can decide the population size and the number of offsprings, based on what we discussed.</p></li>
 <li><p>Pymoo offers different algorithms that can be used which are highly customizable and can be easily extended.
@@ -1494,6 +1509,7 @@ n_gen |  n_eval |  n_nds  |     eps      |  indicator
 </div>
 </div>
 </section>
+</section>
 <section id="analysis-of-results">
 <h2>Analysis of Results<a class="headerlink" href="#analysis-of-results" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -1640,20 +1656,20 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/exe3a_moo_EA_3obj_15_0.png" src="_images/exe3a_moo_EA_3obj_15_0.png" />
+<img alt="_images/exe3a_moo_EA_3obj_16_0.png" src="_images/exe3a_moo_EA_3obj_16_0.png" />
 </div>
 </div>
-</section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="exercise-3">
-<h1>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">#</a></h1>
+<section id="exercise-3-extra">
+<h2>Exercise 3 (extra)<a class="headerlink" href="#exercise-3-extra" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Determine the Pareto set from the 3D front and choose an optimal point</p></li>
 <li><p>Plot the optimal configuration of the tracker corresponding to that point</p></li>
 <li><p>Do analysis of convergence</p></li>
 <li><p>Visualize the point with a radar or petal diagram, following <a class="reference external" href="https://pymoo.org/visualization/index.html">https://pymoo.org/visualization/index.html</a></p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1693,7 +1709,7 @@ if (outputEl) {{
     <a class='right-next' id="next-link" href="exe3b_moo_BO_3obj.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MOBO</p>
+        <p class="prev-next-title">Tutorial 2b: MOBO</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
