@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="(tutorial 2a): AI-assisted design with MOGA" href="exe3a_moo_EA_3obj.html" />
-    <link rel="prev" title="Welcome to Machine Learning for Nuclear Physics and the Electron Ion Collider" href="intro.html" />
+    <link rel="prev" title="Machine Learning for Nuclear Physics and the Electron Ion Collider (HUGS2023)" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to Machine Learning for Nuclear Physics and the Electron Ion Collider
+                    Machine Learning for Nuclear Physics and the Electron Ion Collider (HUGS2023)
                 </a>
             </li>
         </ul>
@@ -159,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   (Tut 1) Deep Learning Deep Inelastic Scattering at EIC
+   Deeply Learning Deep Inelastic Scattering
   </a>
  </li>
  <li class="toctree-l1">
@@ -488,101 +488,92 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   (Tut 1) Deep Learning Deep Inelastic Scattering at EIC
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-for-h1-rapgap-mc-with-reconstructed-observables-as-input">
+   Training for H1 rapgap MC with reconstructed observables as input.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-for-h1-rapgap-mc-with-reconstructed-observables-as-input">
-     Training for H1 rapgap MC with reconstructed observables as input.
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#this-uses-a-single-dnn-with-all-inputs-electron-hfs-photons">
-       This uses a single DNN with all inputs (electron, HFS, photons)
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-any-event-selection-here">
-     Apply any event selection here.
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-machine-learning">
-     Set up machine learning
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-the-regression-network">
-     Set up the regression network
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-ratio-pred-true-for-target-variables-transformed-log-x-log-y-and-log-q2">
-     Plots of Ratio(pred/true) for target variables : transformed log(x), log(y), and log(Q2)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-x">
-     Plots of predicted and true physics variable : x
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-q2">
-     Plots of predicted and true physics variable : Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-y">
-     Plots of predicted and true physics variable : y
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-x">
-     Plots of pred/true of physics variable x
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-q2">
-     Plots of pred/true of physics variable Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-y">
-     Plots of pred/true of physics variable y
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#this-uses-a-single-dnn-with-all-inputs-electron-hfs-photons">
+     This uses a single DNN with all inputs (electron, HFS, photons)
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply-any-event-selection-here">
+   Apply any event selection here.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-machine-learning">
+   Set up machine learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-the-regression-network">
+   Set up the regression network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-ratio-pred-true-for-target-variables-transformed-log-x-log-y-and-log-q2">
+   Plots of Ratio(pred/true) for target variables : transformed log(x), log(y), and log(Q2)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-x">
+   Plots of predicted and true physics variable : x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-q2">
+   Plots of predicted and true physics variable : Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-y">
+   Plots of predicted and true physics variable : y
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-x">
+   Plots of pred/true of physics variable x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-q2">
+   Plots of pred/true of physics variable Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-y">
+   Plots of pred/true of physics variable y
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-plots-of-resolution-for-methods-vs-dnn">
    Comparison plots of resolution for methods vs DNN
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-x">
-     Resolution in x
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-x">
+   Resolution in x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-q2">
+   Resolution in Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-y">
+   Resolution in y
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-results-as-a-function-of-y">
+     Plotting the results as a function of y
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-q2">
-     Resolution in Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-y">
-     Resolution in y
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plotting-the-results-as-a-function-of-y">
-       Plotting the results as a function of y
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -605,101 +596,92 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   (Tut 1) Deep Learning Deep Inelastic Scattering at EIC
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-for-h1-rapgap-mc-with-reconstructed-observables-as-input">
+   Training for H1 rapgap MC with reconstructed observables as input.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-for-h1-rapgap-mc-with-reconstructed-observables-as-input">
-     Training for H1 rapgap MC with reconstructed observables as input.
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#this-uses-a-single-dnn-with-all-inputs-electron-hfs-photons">
-       This uses a single DNN with all inputs (electron, HFS, photons)
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-any-event-selection-here">
-     Apply any event selection here.
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-machine-learning">
-     Set up machine learning
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-the-regression-network">
-     Set up the regression network
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-ratio-pred-true-for-target-variables-transformed-log-x-log-y-and-log-q2">
-     Plots of Ratio(pred/true) for target variables : transformed log(x), log(y), and log(Q2)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-x">
-     Plots of predicted and true physics variable : x
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-q2">
-     Plots of predicted and true physics variable : Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-y">
-     Plots of predicted and true physics variable : y
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-x">
-     Plots of pred/true of physics variable x
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-q2">
-     Plots of pred/true of physics variable Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-y">
-     Plots of pred/true of physics variable y
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#this-uses-a-single-dnn-with-all-inputs-electron-hfs-photons">
+     This uses a single DNN with all inputs (electron, HFS, photons)
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply-any-event-selection-here">
+   Apply any event selection here.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-machine-learning">
+   Set up machine learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-up-the-regression-network">
+   Set up the regression network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-ratio-pred-true-for-target-variables-transformed-log-x-log-y-and-log-q2">
+   Plots of Ratio(pred/true) for target variables : transformed log(x), log(y), and log(Q2)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-x">
+   Plots of predicted and true physics variable : x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-q2">
+   Plots of predicted and true physics variable : Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-predicted-and-true-physics-variable-y">
+   Plots of predicted and true physics variable : y
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-x">
+   Plots of pred/true of physics variable x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-q2">
+   Plots of pred/true of physics variable Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-of-pred-true-of-physics-variable-y">
+   Plots of pred/true of physics variable y
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparison-plots-of-resolution-for-methods-vs-dnn">
    Comparison plots of resolution for methods vs DNN
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-x">
-     Resolution in x
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-x">
+   Resolution in x
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-q2">
+   Resolution in Q2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resolution-in-y">
+   Resolution in y
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-results-as-a-function-of-y">
+     Plotting the results as a function of y
     </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-q2">
-     Resolution in Q2
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#resolution-in-y">
-     Resolution in y
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plotting-the-results-as-a-function-of-y">
-       Plotting the results as a function of y
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -3084,9 +3066,9 @@ Wall time: 8min 23s
 </div>
 </div>
 </section>
+<section id="comparison-plots-of-resolution-for-methods-vs-dnn">
+<h2>Comparison plots of resolution for methods vs DNN<a class="headerlink" href="#comparison-plots-of-resolution-for-methods-vs-dnn" title="Permalink to this headline">#</a></h2>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="comparison-plots-of-resolution-for-methods-vs-dnn">
-<h1>Comparison plots of resolution for methods vs DNN<a class="headerlink" href="#comparison-plots-of-resolution-for-methods-vs-dnn" title="Permalink to this headline">#</a></h1>
 <section id="resolution-in-x">
 <h2>Resolution in x<a class="headerlink" href="#resolution-in-x" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -3470,7 +3452,7 @@ Wall time: 8min 23s
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome to Machine Learning for Nuclear Physics and the Electron Ion Collider</p>
+            <p class="prev-next-title">Machine Learning for Nuclear Physics and the Electron Ion Collider (HUGS2023)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="exe3a_moo_EA_3obj.html" title="next page">
