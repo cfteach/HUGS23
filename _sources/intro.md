@@ -1,4 +1,4 @@
-# Welcome
+# Welcome to Machine Learning for Nuclear Physics and the Electron Ion Collider
 
 This website hosts a mini-series of lectures on AI/ML for Nuclear Physics and the Electron Ion Collider, taught at HUGS2023.
 
