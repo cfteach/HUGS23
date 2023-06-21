@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="MOEA" href="exe3a_moo_EA_3obj.html" />
+    <link rel="next" title="(Tut 2 - part a) AI-assisted design with MOEA" href="exe3a_moo_EA_3obj.html" />
     <link rel="prev" title="(Tut 0) ML/DL Pre-flight" href="NeuralNetwork_preflight.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -126,22 +126,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference external" href="https://docs.google.com/presentation/d/1fL4yGqDfJyvMDVS48uZfi3lWzBkn-dbBYwgkxTkNqmo/edit?usp=sharing">
+  <a class="reference external" href="https://drive.google.com/file/d/1ySR6KmDs7PM1tVcDYuQwvt0wXuv0WIyS/view">
    (Lec 1) AI/ML for Nuclear Physics - A High-Bias, Low-Variance Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference external" href="https://docs.google.com/presentation/d/1TvD0Yv2rAN_eFn178VUPJiJCzG4cS7bF_7RuQVb47Do/edit?usp=sharing">
+  <a class="reference external" href="https://drive.google.com/file/d/1kjGhjYMtmQIz42_fRNfoudC7UoSUMS7t/view">
    (Lec 2) Leveraging AI/ML for the future Electron Ion Collider
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference external" href="https://docs.google.com/presentation/d/1EczgRRjV-e5xOAGEVC3c4fKz4I2D5D_p0HR5vfLR66M/edit?usp=sharing">
+  <a class="reference external" href="https://drive.google.com/file/d/1e0-qNQUldvUZEKib367nltQgqNBNf9LJ/view">
    (Lec 2, extra) AI/ML activities at Jefferson Lab - Paving the way for the Electron Ion Collider
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference external" href="https://docs.google.com/presentation/d/1hKIr1T-cSQHIugyEATlRRB4CuG7LSJVZAZY7VLs7pq4/edit?usp=sharing">
+  <a class="reference external" href="https://drive.google.com/file/d/19tPr009whWgTjSlm9yUSWsUcs62UWjye/view">
    (Lec 3) ePIC at EIC – The First Large-Scale Experiment Designed with the AI Assistance
   </a>
  </li>
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exe3a_moo_EA_3obj.html">
-   MOEA
+   (Tut 2 - part a) AI-assisted design with MOEA
   </a>
  </li>
  <li class="toctree-l1">
@@ -761,7 +761,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wed Jun 14 15:41:13 2023       
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wed Jun 21 22:06:09 2023       
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 525.85.12    Driver Version: 525.85.12    CUDA Version: 12.0     |
 |-------------------------------+----------------------+----------------------+
@@ -770,7 +770,7 @@ title="Print to PDF"
 |                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
-| N/A   54C    P8     9W /  70W |      0MiB / 15360MiB |      0%      Default |
+| N/A   52C    P8    12W /  70W |      0MiB / 15360MiB |      0%      Default |
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
                                                                                
@@ -796,11 +796,11 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Collecting uproot3
   Downloading uproot3-3.14.4-py3-none-any.whl (117 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">117.5/117.5 kB</span> <span class=" -Color -Color-Red">7.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">117.5/117.5 kB</span> <span class=" -Color -Color-Red">4.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hRequirement already satisfied: numpy&gt;=1.13.1 in /usr/local/lib/python3.10/dist-packages (from uproot3) (1.22.4)
 Collecting awkward0 (from uproot3)
   Downloading awkward0-0.15.5-py3-none-any.whl (87 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">87.6/87.6 kB</span> <span class=" -Color -Color-Red">13.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">87.6/87.6 kB</span> <span class=" -Color -Color-Red">10.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hCollecting uproot3-methods (from uproot3)
   Downloading uproot3_methods-0.10.1-py3-none-any.whl (32 kB)
 Requirement already satisfied: cachetools in /usr/local/lib/python3.10/dist-packages (from uproot3) (5.3.0)
@@ -891,7 +891,7 @@ Successfully installed awkward0-0.15.5 uproot3-3.14.4 uproot3-methods-0.10.1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-14 15:41:22.976163
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-21 22:06:17.247803
 training_name : /content/drive/My Drive/projects/DIS-reco/DIS-reco-paper/training_h1_reg_hugs23_v2
 input_file : /content/drive/My Drive/projects/DIS-reco/data/all-h1-rapgap.root
 max_events : 10000000
@@ -939,7 +939,7 @@ delta_setval : 0.01
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ur_file.keys():  [b&#39;Rapgap;1&#39;]
-&lt;TTree b&#39;minitree&#39; at 0x7f15cdbe4760&gt;
+&lt;TTree b&#39;minitree&#39; at 0x7fcd1f53b100&gt;
 wgt                        (no streamer)              asdtype(&#39;&gt;f4&#39;)
 Empz                       (no streamer)              asdtype(&#39;&gt;f4&#39;)
 from_tlv_gen_Q2            (no streamer)              asdtype(&#39;&gt;f4&#39;)
@@ -985,8 +985,8 @@ obs_e_trk_phi              (no streamer)              asdtype(&#39;&gt;f4&#39;)
 
 
  Number of entries in pandas_df:  10000000 
-CPU times: user 11.8 s, sys: 2.99 s, total: 14.8 s
-Wall time: 38.4 s
+CPU times: user 12.9 s, sys: 2.89 s, total: 15.8 s
+Wall time: 33.6 s
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1003,7 @@ Wall time: 38.4 s
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-814bab5d-e001-4520-86b8-c8e363c30f8a">
+  <div id="df-8c2e3ebf-217f-420d-82d8-37ccfc740e4a">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1195,7 +1195,7 @@ Wall time: 38.4 s
 </table>
 <p>5 rows × 49 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-814bab5d-e001-4520-86b8-c8e363c30f8a')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8c2e3ebf-217f-420d-82d8-37ccfc740e4a')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1246,12 +1246,12 @@ Wall time: 38.4 s
 
       <script>
         const buttonEl =
-          document.querySelector('#df-814bab5d-e001-4520-86b8-c8e363c30f8a button.colab-df-convert');
+          document.querySelector('#df-8c2e3ebf-217f-420d-82d8-37ccfc740e4a button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-814bab5d-e001-4520-86b8-c8e363c30f8a');
+          const element = document.querySelector('#df-8c2e3ebf-217f-420d-82d8-37ccfc740e4a');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1280,7 +1280,7 @@ Wall time: 38.4 s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-a1dce004-1ed8-4e32-be3e-73fe010bed74">
+  <div id="df-013ba95a-8634-45f5-b704-51a64031c425">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1472,7 +1472,7 @@ Wall time: 38.4 s
 </table>
 <p>5 rows × 49 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-a1dce004-1ed8-4e32-be3e-73fe010bed74')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-013ba95a-8634-45f5-b704-51a64031c425')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1523,12 +1523,12 @@ Wall time: 38.4 s
 
       <script>
         const buttonEl =
-          document.querySelector('#df-a1dce004-1ed8-4e32-be3e-73fe010bed74 button.colab-df-convert');
+          document.querySelector('#df-013ba95a-8634-45f5-b704-51a64031c425 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-a1dce004-1ed8-4e32-be3e-73fe010bed74');
+          const element = document.querySelector('#df-013ba95a-8634-45f5-b704-51a64031c425');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1599,7 +1599,7 @@ Wall time: 38.4 s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d1ab8ccd-1253-4646-b6a8-896cded4bff8">
+  <div id="df-d195973b-81af-49b4-b037-ea408d06b105">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1791,7 +1791,7 @@ Wall time: 38.4 s
 </table>
 <p>5 rows × 64 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-d1ab8ccd-1253-4646-b6a8-896cded4bff8')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d195973b-81af-49b4-b037-ea408d06b105')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -1842,12 +1842,12 @@ Wall time: 38.4 s
 
       <script>
         const buttonEl =
-          document.querySelector('#df-d1ab8ccd-1253-4646-b6a8-896cded4bff8 button.colab-df-convert');
+          document.querySelector('#df-d195973b-81af-49b4-b037-ea408d06b105 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-d1ab8ccd-1253-4646-b6a8-896cded4bff8');
+          const element = document.querySelector('#df-d195973b-81af-49b4-b037-ea408d06b105');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1944,7 +1944,7 @@ Wall time: 38.4 s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-e9ee15eb-645c-44cb-ace5-051c52197c6d">
+  <div id="df-fae2d0f9-b5d5-4591-a34c-0fb6bf74a01b">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -2136,7 +2136,7 @@ Wall time: 38.4 s
 </table>
 <p>5 rows × 64 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e9ee15eb-645c-44cb-ace5-051c52197c6d')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-fae2d0f9-b5d5-4591-a34c-0fb6bf74a01b')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
 
@@ -2187,12 +2187,12 @@ Wall time: 38.4 s
 
       <script>
         const buttonEl =
-          document.querySelector('#df-e9ee15eb-645c-44cb-ace5-051c52197c6d button.colab-df-convert');
+          document.querySelector('#df-fae2d0f9-b5d5-4591-a34c-0fb6bf74a01b button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-e9ee15eb-645c-44cb-ace5-051c52197c6d');
+          const element = document.querySelector('#df-fae2d0f9-b5d5-4591-a34c-0fb6bf74a01b');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -2437,12 +2437,10 @@ GY_test shape:  (1013914,)
 
 <span class="c1">#-- initial layer</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
-<span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_setval</span><span class="p">))</span> <span class="c1"># another regularization technique used to prevent overfitting (used during training) --- drops neurons</span>
+<span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_setval</span><span class="p">))</span>
 
 <span class="c1">#-- middle part</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;selu&#39;</span><span class="p">))</span>
-<span class="c1">#Scaled Exponential Linear Unit ---  return scale * x. if x &lt; 0: return scale * alpha * (exp(x) - 1)</span>
-<span class="c1">#Mitigates the Vanishing Gradient Problem, Reduce overfitting, self-normalizing property in each layer</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_setval</span><span class="p">))</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;selu&#39;</span><span class="p">))</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_setval</span><span class="p">))</span>
@@ -2458,15 +2456,10 @@ GY_test shape:  (1013914,)
 <span class="n">model_r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">))</span>
 
 <span class="n">opt_r</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate_setval_reg</span><span class="p">,</span> <span class="n">amsgrad</span><span class="o">=</span><span class="n">amsgrad_setval</span> <span class="p">)</span>
-<span class="c1"># Adaptive moment estimation --- see lecture notes</span>
 <span class="n">myloss_r</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">Huber</span><span class="p">(</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta_setval</span> <span class="p">)</span>
 
 <span class="c1">#model_r.compile(loss=myloss_r, optimizer=opt_r, metrics=[&#39;mean_absolute_error&#39;])</span>
 <span class="n">model_r</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">myloss_r</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">opt_r</span><span class="p">)</span>
-<span class="c1"># HUBER</span>
-<span class="c1">#L(y, f(x)) = 0.5 * (y - f(x))^2                        for |y - f(x)| &lt;= delta</span>
-<span class="c1">#L(y, f(x)) = delta * |y - f(x)| - 0.5 * delta^2        for |y - f(x)| &gt; delta</span>
-<span class="c1"># less sensitive to outliers compared to MSE</span>
 
 <span class="n">model_r</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
@@ -2528,107 +2521,107 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50
-991/991 [==============================] - 17s 9ms/step - loss: 0.0017 - val_loss: 0.0012
+991/991 [==============================] - 19s 11ms/step - loss: 0.0018 - val_loss: 0.0012
 Epoch 2/50
 991/991 [==============================] - 8s 8ms/step - loss: 0.0011 - val_loss: 0.0010
 Epoch 3/50
-991/991 [==============================] - 9s 9ms/step - loss: 9.7138e-04 - val_loss: 9.2966e-04
+991/991 [==============================] - 9s 9ms/step - loss: 9.6870e-04 - val_loss: 9.3596e-04
 Epoch 4/50
-991/991 [==============================] - 9s 9ms/step - loss: 8.9844e-04 - val_loss: 8.7709e-04
+991/991 [==============================] - 8s 8ms/step - loss: 8.9657e-04 - val_loss: 8.6993e-04
 Epoch 5/50
-991/991 [==============================] - 8s 8ms/step - loss: 8.4900e-04 - val_loss: 8.4973e-04
+991/991 [==============================] - 7s 7ms/step - loss: 8.4757e-04 - val_loss: 8.3529e-04
 Epoch 6/50
-991/991 [==============================] - 10s 10ms/step - loss: 8.1356e-04 - val_loss: 8.2236e-04
+991/991 [==============================] - 9s 9ms/step - loss: 8.1183e-04 - val_loss: 8.0680e-04
 Epoch 7/50
-991/991 [==============================] - 8s 8ms/step - loss: 7.8560e-04 - val_loss: 7.8089e-04
+991/991 [==============================] - 9s 9ms/step - loss: 7.8547e-04 - val_loss: 7.9091e-04
 Epoch 8/50
-991/991 [==============================] - 8s 8ms/step - loss: 7.6317e-04 - val_loss: 7.8277e-04
+991/991 [==============================] - 8s 8ms/step - loss: 7.6325e-04 - val_loss: 7.5647e-04
 Epoch 9/50
-991/991 [==============================] - 11s 11ms/step - loss: 7.4407e-04 - val_loss: 7.5637e-04
+991/991 [==============================] - 9s 9ms/step - loss: 7.4459e-04 - val_loss: 7.4042e-04
 Epoch 10/50
-991/991 [==============================] - 11s 11ms/step - loss: 7.2788e-04 - val_loss: 7.3883e-04
+991/991 [==============================] - 8s 8ms/step - loss: 7.3022e-04 - val_loss: 7.2414e-04
 Epoch 11/50
-991/991 [==============================] - 8s 8ms/step - loss: 7.1483e-04 - val_loss: 7.5100e-04
+991/991 [==============================] - 9s 9ms/step - loss: 7.1590e-04 - val_loss: 7.1354e-04
 Epoch 12/50
-991/991 [==============================] - 9s 9ms/step - loss: 7.0264e-04 - val_loss: 7.1253e-04
+991/991 [==============================] - 9s 9ms/step - loss: 7.0551e-04 - val_loss: 7.0036e-04
 Epoch 13/50
-991/991 [==============================] - 10s 11ms/step - loss: 6.9214e-04 - val_loss: 6.9306e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.9453e-04 - val_loss: 7.0031e-04
 Epoch 14/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.8192e-04 - val_loss: 6.9008e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.8590e-04 - val_loss: 6.9650e-04
 Epoch 15/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.7383e-04 - val_loss: 6.7460e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.7717e-04 - val_loss: 6.8033e-04
 Epoch 16/50
-991/991 [==============================] - 10s 11ms/step - loss: 6.6661e-04 - val_loss: 6.8269e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.7033e-04 - val_loss: 6.8782e-04
 Epoch 17/50
-991/991 [==============================] - 11s 11ms/step - loss: 6.5961e-04 - val_loss: 6.8279e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.6388e-04 - val_loss: 6.7123e-04
 Epoch 18/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.5268e-04 - val_loss: 6.6223e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.5735e-04 - val_loss: 6.6752e-04
 Epoch 19/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.4649e-04 - val_loss: 6.5912e-04
+991/991 [==============================] - 10s 10ms/step - loss: 6.5187e-04 - val_loss: 6.8402e-04
 Epoch 20/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.4129e-04 - val_loss: 6.4054e-04
+991/991 [==============================] - 10s 11ms/step - loss: 6.4631e-04 - val_loss: 6.5324e-04
 Epoch 21/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.3664e-04 - val_loss: 6.6149e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.4133e-04 - val_loss: 6.5073e-04
 Epoch 22/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.3153e-04 - val_loss: 6.4340e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.3720e-04 - val_loss: 6.3756e-04
 Epoch 23/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.2645e-04 - val_loss: 6.3189e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.3223e-04 - val_loss: 6.4863e-04
 Epoch 24/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.2342e-04 - val_loss: 6.4084e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.2849e-04 - val_loss: 6.3588e-04
 Epoch 25/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.1874e-04 - val_loss: 6.5268e-04
+991/991 [==============================] - 10s 10ms/step - loss: 6.2463e-04 - val_loss: 6.3600e-04
 Epoch 26/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.1463e-04 - val_loss: 6.3094e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.2054e-04 - val_loss: 6.3251e-04
 Epoch 27/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.1201e-04 - val_loss: 6.1803e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.1795e-04 - val_loss: 6.5578e-04
 Epoch 28/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.0837e-04 - val_loss: 6.2098e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.1481e-04 - val_loss: 6.3111e-04
 Epoch 29/50
-991/991 [==============================] - 9s 9ms/step - loss: 6.0510e-04 - val_loss: 6.1413e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.1129e-04 - val_loss: 6.1475e-04
 Epoch 30/50
-991/991 [==============================] - 8s 8ms/step - loss: 6.0182e-04 - val_loss: 6.1228e-04
+991/991 [==============================] - 11s 11ms/step - loss: 6.0822e-04 - val_loss: 6.1605e-04
 Epoch 31/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.9920e-04 - val_loss: 6.1042e-04
+991/991 [==============================] - 9s 9ms/step - loss: 6.0588e-04 - val_loss: 6.2219e-04
 Epoch 32/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.9659e-04 - val_loss: 6.0558e-04
+991/991 [==============================] - 8s 8ms/step - loss: 6.0301e-04 - val_loss: 6.1395e-04
 Epoch 33/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.9332e-04 - val_loss: 5.9986e-04
+991/991 [==============================] - 11s 11ms/step - loss: 6.0020e-04 - val_loss: 6.0387e-04
 Epoch 34/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.9113e-04 - val_loss: 6.1063e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.9814e-04 - val_loss: 6.0871e-04
 Epoch 35/50
-991/991 [==============================] - 11s 11ms/step - loss: 5.8922e-04 - val_loss: 6.0908e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.9567e-04 - val_loss: 6.0209e-04
 Epoch 36/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.8656e-04 - val_loss: 6.0258e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.9355e-04 - val_loss: 5.9776e-04
 Epoch 37/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.8409e-04 - val_loss: 5.9105e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.9091e-04 - val_loss: 5.9876e-04
 Epoch 38/50
-991/991 [==============================] - 11s 11ms/step - loss: 5.8250e-04 - val_loss: 5.8664e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.9029e-04 - val_loss: 5.9862e-04
 Epoch 39/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.8012e-04 - val_loss: 5.9579e-04
+991/991 [==============================] - 7s 7ms/step - loss: 5.8710e-04 - val_loss: 5.8963e-04
 Epoch 40/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.7868e-04 - val_loss: 5.9401e-04
+991/991 [==============================] - 8s 9ms/step - loss: 5.8547e-04 - val_loss: 6.0413e-04
 Epoch 41/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.7709e-04 - val_loss: 5.8704e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.8332e-04 - val_loss: 6.0851e-04
 Epoch 42/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.7467e-04 - val_loss: 5.7800e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.8195e-04 - val_loss: 5.9649e-04
 Epoch 43/50
-991/991 [==============================] - 11s 11ms/step - loss: 5.7301e-04 - val_loss: 5.8188e-04
+991/991 [==============================] - 9s 9ms/step - loss: 5.8016e-04 - val_loss: 5.9112e-04
 Epoch 44/50
-991/991 [==============================] - 11s 11ms/step - loss: 5.7118e-04 - val_loss: 5.8800e-04
+991/991 [==============================] - 7s 7ms/step - loss: 5.7821e-04 - val_loss: 5.8393e-04
 Epoch 45/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.6993e-04 - val_loss: 5.8300e-04
+991/991 [==============================] - 9s 9ms/step - loss: 5.7687e-04 - val_loss: 5.7991e-04
 Epoch 46/50
-991/991 [==============================] - 9s 9ms/step - loss: 5.6781e-04 - val_loss: 5.7512e-04
+991/991 [==============================] - 10s 10ms/step - loss: 5.7440e-04 - val_loss: 5.8244e-04
 Epoch 47/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.6692e-04 - val_loss: 5.7393e-04
+991/991 [==============================] - 8s 8ms/step - loss: 5.7386e-04 - val_loss: 6.0049e-04
 Epoch 48/50
-991/991 [==============================] - 8s 8ms/step - loss: 5.6483e-04 - val_loss: 5.7235e-04
+991/991 [==============================] - 9s 9ms/step - loss: 5.7166e-04 - val_loss: 5.7298e-04
 Epoch 49/50
-991/991 [==============================] - 11s 11ms/step - loss: 5.6375e-04 - val_loss: 5.7727e-04
+991/991 [==============================] - 7s 7ms/step - loss: 5.7087e-04 - val_loss: 5.7640e-04
 Epoch 50/50
-991/991 [==============================] - 10s 11ms/step - loss: 5.6191e-04 - val_loss: 5.6927e-04
-CPU times: user 6min 56s, sys: 22.1 s, total: 7min 18s
-Wall time: 8min 23s
+991/991 [==============================] - 9s 9ms/step - loss: 5.6885e-04 - val_loss: 5.7290e-04
+CPU times: user 6min 42s, sys: 22.3 s, total: 7min 4s
+Wall time: 7min 23s
 </pre></div>
 </div>
 </div>
@@ -2641,7 +2634,7 @@ Wall time: 8min 23s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f12f8c026b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fca4a75e170&gt;]
 </pre></div>
 </div>
 <img alt="_images/NN_h1_reg_CF_34_1.png" src="_images/NN_h1_reg_CF_34_1.png" />
@@ -3214,7 +3207,7 @@ Wall time: 8min 23s
 
 <span class="c1"># the DNN method</span>
 <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_cut</span><span class="p">)):</span>
-    <span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span>  <span class="n">ax</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])]</span> <span class="o">/</span> <span class="n">true_vals</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])],</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span>  <span class="n">ax</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])]</span> <span class="o">/</span> <span class="n">true_vals</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])],</span>
                    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">))</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Deep NN&#39;</span><span class="p">)</span>
 
@@ -3276,7 +3269,7 @@ Wall time: 8min 23s
 
 <span class="c1"># the DNN method</span>
 <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_cut</span><span class="p">)):</span>
-    <span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])]</span> <span class="o">/</span> <span class="n">true_vals</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])],</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pred_vals</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])]</span> <span class="o">/</span> <span class="n">true_vals</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">][(</span><span class="n">GY_test</span> <span class="o">&gt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">GY_test</span> <span class="o">&lt;</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">yi</span><span class="p">][</span><span class="mi">1</span><span class="p">])],</span>
                    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">))</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">methods_to_use</span><span class="p">)]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Deep NN&#39;</span><span class="p">)</span>
 
@@ -3500,7 +3493,7 @@ Wall time: 8min 23s
     <a class='right-next' id="next-link" href="exe3a_moo_EA_3obj.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MOEA</p>
+        <p class="prev-next-title">(Tut 2 - part a) AI-assisted design with MOEA</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
